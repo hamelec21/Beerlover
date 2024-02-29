@@ -4,7 +4,12 @@
     <div class="container mx-auto mt-10">
         <div class="w-full flex justify-center">
             <div class="text-center mt-10">
-                {{ QrCode::size(150)->generate(route('socio.ticket', ['id' => $comercio->id])) }}
+                {{--
+                    {{QrCode::size(150)->generate(route('socio.ticket', ['id' => $comercio->id]))}}
+                     --}}
+
+
+                {{ QrCode::size(150)->generate(route('validar.ticket', ['id' => $comercio->id])) }}
             </div>
         </div>
 
