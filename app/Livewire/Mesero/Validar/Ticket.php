@@ -79,7 +79,7 @@ class Ticket extends Component
         // Redirigir a la página de inicio del mesero
         $this->dispatch('render');
         $this->dispatch('insert');
-        return redirect()->route('mesero.home');
+        return redirect()->route('socio.home'); //mesero.home
     }
 
 
@@ -115,7 +115,7 @@ class Ticket extends Component
         ModelsTicket::create([
             'codigo_ticket' => $codigoticket,
             'ticket_status_id' => 2,
-            'users_id' => $this->use_id,
+            'users_id' => $this->user_id,
             'locales_id' => $this->loc->id,
         ]);
 

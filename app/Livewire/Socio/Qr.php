@@ -15,6 +15,7 @@ class Qr extends Component
 
     public function mount($id)
     {
+
         $this->id = $id;
         $this->comercio = Local::where('id', $this->id)->first();
         $this->user_id = auth()->user()->id;
