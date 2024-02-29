@@ -13,8 +13,6 @@
             </div>
         </div>
 
-        {{ $this->user_id }}
-
         <div class="flex justify-center mt-10 px-4">
             <a  href='{{ route('socio.home')}}'
             class='block mt-2 w-full px-4 py-2  text-white font-medium  text-center  bg-red-600 rounded-[14px] hover:bg-red-700'>

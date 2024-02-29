@@ -1,17 +1,14 @@
 <div>
 
     @include('header')
-    <div class=" bg-white flex flex-col items-center justify-center">
+    <div class=" bg-white flex flex-col items-center justify-center mt-10">
         <div class="flex justify-center">
             @if (session('error'))
                 <div id="error-message" class="alert alert-danger mt-10">{{ session('error') }}</div>
             @endif
         </div>
-        <img src="{{ asset('img/logo/logo_beerlover.png') }}" class="w-1/2">
     </div>
     <!-- mesero.home.blade.php -->
-
-
     <style>
         .fade-out {
             opacity: 0;
@@ -19,7 +16,8 @@
         }
     </style>
 
-    <script>
+
+      <script>
         // Desvanecer el mensaje de error después de 5 segundos
         setTimeout(function() {
             var errorMessage = document.getElementById('error-message');
@@ -34,6 +32,9 @@
             window.location.href = "{{ route('socio.home') }}";
         }, 5000);
     </script>
+
+   
+
 
 
 
