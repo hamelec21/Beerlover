@@ -12,6 +12,4 @@ Route::middleware(['auth:sanctum', 'verified', 'role:socio'])->group(function ()
 
     Route::get('/socio/qr/{id}', \App\Livewire\Socio\Qr::class)->name('socio.qr');
 
-   // Route::get('/socio/ticket/{id}', \App\Livewire\Socio\Ticket::class)->name('socio.ticket'); //debe ser publica
-
 });
