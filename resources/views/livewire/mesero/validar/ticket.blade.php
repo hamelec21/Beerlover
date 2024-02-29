@@ -7,9 +7,9 @@
     <div class="container mx-auto mt-10 bg-gray-100 rounded-lg w-1/2  py-20">
         <div class="flex flex-col justify-center items-center h-full space-x-2">
             <div class="text-center text-lg font-bold  px-4">
-                {{ $use }}
+                {{$this->socio->name }}
                 <br>
-                {{ $apellidos }}
+                {{$this->socio->apellidos }}
                 <br>
                 {{ $ultimoscuatrodigitos }}
             </div>

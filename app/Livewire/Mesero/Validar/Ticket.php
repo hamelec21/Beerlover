@@ -16,44 +16,48 @@ class Ticket extends Component
 {
 
 
-    public $use, $loc, $sociorut, $apellidos, $use_id;
+    public $use, $loc, $sociorut, $apellidos, $user_id , $socio;
     public $ultimoscuatrodigitos;
 
-    public function mount($id)
+    public function mount($id,$user_id)
     {
-        $this->use = auth()->user()->name;
-        $this->use_id = auth()->user()->id;
-        $this->apellidos = auth()->user()->apellidos;
-        $this->sociorut = auth()->user()->rut;
+       // dd($user_id,$id);
+        $this->loc = Local::where('id', $id)->first();
+
+        //consulta users
+        //$this->socio = User::where('id', $user_id)->first();
+
+        $this->socio = User::find($user_id);
+      // dd($this->socio);
+        $this->sociorut = $this->socio->rut;
         $rutSinFormato = str_replace(['.', '-'], '', $this->sociorut);
         $this->ultimoscuatrodigitos = substr($rutSinFormato, -5, 4);
-        $this->loc = Local::where('id', $id)->first();
 
     }
 
     public function validar_ticket()
     {
         // Verificar si el usuario está bloqueado en este local
-        $blockedUser = BlockedUser::where('user_id', $this->use_id)
+        $blockedUser = BlockedUser::where('user_id', $this->user_id)
             ->where('locales_id', $this->loc->id)
             ->where('blocked_until', '>', now())
             ->exists();
 
-       //  Si el usuario está bloqueado, mostrar un mensaje de error y redirigir
+        //  Si el usuario está bloqueado, mostrar un mensaje de error y redirigir
         // Si el usuario está bloqueado, calcular el tiempo restante de bloqueo y redirigir
-    if ($blockedUser) {
-        $blockedUntil = BlockedUser::where('user_id', $this->use_id)
-            ->where('locales_id', $this->loc->id)
-            ->where('blocked_until', '>', now())
-            ->first()
-            ->blocked_until;
+        if ($blockedUser) {
+            $blockedUntil = BlockedUser::where('user_id', $this->user_id)
+                ->where('locales_id', $this->loc->id)
+                ->where('blocked_until', '>', now())
+                ->first()
+                ->blocked_until;
 
-        $timeRemaining = now()->diffInMinutes($blockedUntil);
+            $timeRemaining = now()->diffInMinutes($blockedUntil);
 
-        $errorMessage = '¡Su Proximo Ticket Esta Disponible En!' . $timeRemaining . ' minutos. ¡Gracias!.';
+            $errorMessage = '¡Su Proximo Ticket Esta Disponible En!' . $timeRemaining . ' minutos. ¡Gracias!.';
 
-        return redirect()->route('mesero.home')->with('error', $errorMessage);
-    }
+            return redirect()->route('mesero.home')->with('error', $errorMessage);
+        }
         // Generar un código aleatorio para el ticket
         $codigo_ticket = Str::random(10);
 
@@ -61,7 +65,7 @@ class Ticket extends Component
         $ticket = ModelsTicket::create([
             'codigo_ticket' => $codigo_ticket,
             'ticket_status_id' => 1,
-            'users_id' => $this->use_id,
+            'users_id' => $this->user_id,
             'locales_id' => $this->loc->id,
         ]);
         // Verificar si el ticket fue creado exitosamente
@@ -69,7 +73,7 @@ class Ticket extends Component
             // Verificar si el ticket ha sido canjeado
             if ($ticket->ticket_status_id == 1) {
                 // Bloquear el usuario en este local durante 2 minutos
-                $this->bloquearUsuarioEnLocal($this->use_id, $this->loc->id);
+                $this->bloquearUsuarioEnLocal($this->user_id, $this->loc->id);
             }
         }
         // Redirigir a la página de inicio del mesero
@@ -78,16 +82,18 @@ class Ticket extends Component
         return redirect()->route('mesero.home');
     }
 
+
+
     private function bloquearUsuarioEnLocal($user_id, $loc_id)
     {
-            $bloqueo =Bloqueo::first();
+        $bloqueo = Bloqueo::first();
         // Calcular el tiempo de desbloqueo (5 minutos desde ahora)
         $blocked_until = now()->addMinutes($bloqueo->tiempo);
 
         // Verificar si el usuario ya está bloqueado en este local
         $blockedUser = BlockedUser::where('user_id', $user_id)
-                                  ->where('locales_id', $loc_id)
-                                  ->first();
+            ->where('locales_id', $loc_id)
+            ->first();
         // Si el usuario ya está bloqueado en este local, actualiza el tiempo de desbloqueo
         if ($blockedUser) {
             $blockedUser->blocked_until = $blocked_until;

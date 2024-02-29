@@ -9,9 +9,11 @@
                      --}}
 
 
-                {{ QrCode::size(150)->generate(route('validar.ticket', ['id' => $comercio->id])) }}
+                {{ QrCode::size(150)->generate(route('validar.ticket', ['id' => $comercio->id,'user_id' => $this->user_id])) }}
             </div>
         </div>
+
+        {{ $this->user_id }}
 
         <div class="flex justify-center mt-10 px-4">
             <a  href='{{ route('socio.home')}}'

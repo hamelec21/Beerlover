@@ -18,6 +18,7 @@ class Qr extends Component
         $this->id = $id;
         $this->comercio = Local::where('id', $this->id)->first();
         $this->user_id = auth()->user()->id;
+
         if ($this->comercio) {
             $blockedUser = BlockedUser::where('user_id', $this->user_id)
                 ->where('locales_id', $this->comercio->id)
