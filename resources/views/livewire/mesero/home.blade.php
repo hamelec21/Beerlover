@@ -1,5 +1,4 @@
 <div>
-
     {{-- header --}}
     <div class="bg-green-700 h-56 md:h-44 lg:36 xl:h-36 flex items-center align-middle rounded-b-2xl shadow-md">
         <div class="container mx-auto">
