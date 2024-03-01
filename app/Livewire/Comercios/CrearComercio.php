@@ -34,7 +34,8 @@ class CrearComercio extends Component
             'imagen' => 'required|mimes:jpg,png|max:10240', // Valida que sea un archivo PDF y su tamaño no sea mayor a 5MB
         ]);
 
-        $path = $this->imagen->store('foto', 'public');
+
+        $path = $this->imagen->store('public/foto');
         Local::create([
             'nombre' => $this->nombre,
             'direccion' => $this->direccion,

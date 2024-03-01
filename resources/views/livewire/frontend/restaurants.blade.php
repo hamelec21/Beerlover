@@ -72,12 +72,12 @@
                             <div class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden'>
                                 <div class='max-w-md mx-auto'>
                                     <div class='h-[236px]'
-                                        style="background-image: url('{{ asset('storage/' . $comercio->imagen) }}'); background-size: cover; background-position: center;">
+                                        style="background-image: url(' {{ Storage::url($comercio->imagen) }}'); background-size: cover; background-position: center;">
                                     </div>
                                     <div class='p-4 sm:p-6'>
                                         <!--nombre local-->
-                                        <p class='font-bold text-gray-700 text-center text-lg mb-1 underline '>Machu
-                                            Picchu</p>
+                                        <p class='font-bold text-gray-700 text-center text-lg mb-1 underline '>
+                                            {{ $comercio->nombre }} </p>
 
                                         <!--Direccion-->
                                         <div class='flex-col'>

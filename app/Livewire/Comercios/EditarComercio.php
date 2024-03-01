@@ -110,12 +110,9 @@ class EditarComercio extends Component
         $local->hpm10 = $this->hpm10 ;
         $local->hpm12 = $this->hpm12;
         $local->hpm14 = $this->hpm14;
-        $local->imagen = $this->imagen;
+       // $local->imagen = $this->imagen;
         $local->consumo_min = $this->consumo_min;
         $local->cerveza = $this->cerveza;
-
-
-
 
         // Actualizar las imágenes solo si se proporcionan nuevas imágenes
         if ($this->imagen) {
@@ -125,10 +122,9 @@ class EditarComercio extends Component
                 // Elimina la imagen actual
                 Storage::delete($local->imagen);
                 // Almacena la nueva imagen
-                $local->imagen = $this->imagen->store('fotos', 'public');
+                $local->imagen = $this->imagen->store('public/foto');
             }
         }
-
         $local->save();
         $this->dispatch('editar');
         return redirect()->route('show-comercio');

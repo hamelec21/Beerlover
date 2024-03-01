@@ -63,7 +63,7 @@
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
                                             <span>
-                                           <img src=" {{ asset('storage/' . $comercio->imagen) }}" class="w-10">
+                                           <img src=" {{ Storage::url($comercio->imagen) }}" class="w-10">
                                             </span>
                                         </div>
                                     </td>
