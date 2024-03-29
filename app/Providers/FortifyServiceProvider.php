@@ -32,7 +32,7 @@ class FortifyServiceProvider extends ServiceProvider
                     $user &&
                     Hash::check($request->password, $user->password) &&
                     ($user->hasRole('SOCIO') || $user->hasRole('SUPER-ADMIN') || $user->hasRole('MESERO')) &&
-                    $user->customerId
+                    $user->usuario_status_id == '3'
                 ) {
                     // El usuario tiene el rol 'SOCIO' o 'SUPER-ADMIN' o 'MESERO' y es un cliente creado
                     if ($user->hasRole('SOCIO')) {
@@ -45,7 +45,7 @@ class FortifyServiceProvider extends ServiceProvider
                 } else {
                     // Código en caso de que la condición no se cumpla
                     //return redirect('flow/customer/crear-cliente');
-                    return redirect('socio/home');
+                    return redirect('/');
                 }
                 return redirect('/dashboard');
             }
