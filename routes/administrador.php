@@ -15,12 +15,6 @@ Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function ()
     Route::get('mesero/registro/editar-mesero/{id}', \App\Livewire\Mesero\Registro\EditarMesero::class)->name('editar-mesero');
 });
 
-// rutas  suscripciones
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-
-    Route::get('suscripcion/show-suscripciones', \App\Livewire\Suscripcion\ShowSuscripciones::class)->name('show-suscripciones');
-    Route::get('suscripcion/crear-suscripcion', \App\Livewire\Suscripcion\CrearSuscripcion::class)->name('crear-suscripcion');
-});
 
 //rutas planes
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
@@ -29,6 +23,16 @@ Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function ()
     Route::get('plan/crear-plan', \App\Livewire\Plan\CrearPlan::class)->name('crear-plan');
     Route::get('plan/editar-plan/{id}', \App\Livewire\Plan\EditarPlan::class)->name('editar-plan');
 });
+
+
+
+//rutas de suscritos
+Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
+    Route::get('suscripcion/show-suscritos', \App\Livewire\Suscripcion\ShowSuscritos::class)->name('show-suscritos');
+    Route::get('suscripcion/editar-suscrito/{id}', \App\Livewire\Suscripcion\EditarSuscrito::class)->name('editar-suscrito');
+});
+
+
 
 //rutas status suscripciones
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {

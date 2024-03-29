@@ -10,8 +10,10 @@
             <div class="overflow-x-auto">
                 <div class="mt-5 flex  bg-gray-100 font-sans overflow-hidden rounded-lg">
                     <div class="w-full">
+
                         {{-- seccion de busqueda --}}
                         <div class="flex justify-around bg-gray-200 items-center  py-3">
+
                             <div class=" text-left text-gray-900 font-bold py-1 text-sm ">
                                 <input wire:model.live="search" type="text" name="titulo" id=""
                                     placeholder="Busqueda"
@@ -20,14 +22,15 @@
                                     <span class="error text-red-600 text-xs">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <!--boton de crear-->
-                            {{--
                             <div>
-                                <a href="{{ route('crear-status-suscripciones') }}">
-                                    <button class="btn-agregar ">Crear Nuevo Status De Suscripcion</button>
-                                </a>
+                                <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase"
+                                    type="text" wire:model.live="filtro_estado" />
+                                <option value="" class="uppercase">Elegir Estado</option>
+                                @foreach ($estado_usuario as $estado)
+                                    <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                @endforeach
+                                </select>
                             </div>
-                            --}}
                         </div>
 
                         <!--tabla de contenido-->
@@ -42,42 +45,49 @@
         <!--tabla-->
         <div class="container mx-auto">
             <div class="bg-white shadow-md rounded my-6 ">
-                @if ($suscripciones->count())
+                @if ($usuarios->count())
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm ">
 
                                 <th class="py-3 px-6 text-left">ID</th>
-                                <th class="py-3 px-6 text-left">Socio</th>
-                                <th class="py-3 px-6 text-left">Tipo Suscripcion</th>
-                                <th class="py-3 px-6 text-left">Estado</th>
-                                <th class="py-3 px-6 text-left">plan</th>
-                                <th class="py-3 px-6 text-left">Fecha Inicio</th>
-                                <th class="py-3 px-6 text-left">Fecha Vencimiento</th>
+                                <th class="py-3 px-6 text-left">nombre</th>
+                                <th class="py-3 px-6 text-left">apellidos</th>
+                                <th class="py-3 px-6 text-left">email</th>
+                                <th class="py-3 px-6 text-left">estado</th>
+                                <th class="py-3 px-6 text-left">Fecha Registro</th>
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
 
                         <tbody class="text-gray-600 text-sm font-light">
-                            @foreach ($suscripciones as $suscripcion)
+                            @foreach ($usuarios as $usuario)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
 
 
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase">
-                                            <span>{{ $suscripcion->id }}</span>
+                                            <span>{{ $usuario->id }}</span>
                                         </div>
                                     </td>
 
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $suscripcion->usuario->name }}
-                                                {{ $suscripcion->usuario->apellidos }}</span>
+                                            <span>{{ $usuario->name }}
+                                               </span>
                                         </div>
                                     </td>
+
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $suscripcion->tipo_suscripcion->nombre }}</span>
+                                            <span> {{ $usuario->apellidos }}</span>
+                                        </div>
+                                    </td>
+
+
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold ">
+                                            <span>{{ $usuario->email }}</span>
                                         </div>
                                     </td>
 
@@ -85,13 +95,19 @@
                                         <div class="flex items-center font-bold uppercase ">
 
                                             <div>
-                                                @if ($suscripcion->status_suscripciones_id == '1')
-                                                    <span class="text-white bg-green-600 rounded-lg px-2">Activo</span>
-                                                @elseif($suscripcion->status_suscripciones_id == '2')
-                                                    <span class="text-white bg-red-600 rounded-lg px-2">Bloqueado</span>
-                                                @else
-                                                    <span class="text-gray-500">No Se Registra Estado</span>
-                                                @endif
+                                                @if ($usuario->usuario_status_id == '1')
+                                                <span class="text-white bg-green-600 rounded-lg px-2 py-1">Registrado</span>
+                                            @elseif($usuario->usuario_status_id == '2')
+                                                <span class="text-white bg-yellow-500 rounded-lg px-2 py-1">Pendiente</span>
+                                            @elseif($usuario->usuario_status_id == '3')
+                                                <span class="text-white bg-blue-600 rounded-lg px-2 py-1">Activo</span>
+                                            @elseif($usuario->usuario_status_id == '4')
+                                                <span class="text-white bg-red-600 rounded-lg px-2 py-1">Suspendido</span>
+                                            @elseif($usuario->usuario_status_id == '5')
+                                                <span class="text-white bg-gray-600 rounded-lg px-2 py-1">Baja</span>
+                                            @else
+                                                <span class="text-gray-500">No Se Registra Estado</span>
+                                            @endif
                                             </div>
 
                                         </div>
@@ -99,19 +115,7 @@
 
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $suscripcion->plan->nombre }}</span>
-                                        </div>
-                                    </td>
-
-                                    <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $suscripcion->fecha_inicio }}</span>
-                                        </div>
-                                    </td>
-
-                                    <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $suscripcion->fecha_vencimiento }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($usuario->created_at)->format('d/m/Y') }}</span>
                                         </div>
                                     </td>
 
@@ -120,14 +124,14 @@
 
                                             <div class="flex items-center justify-around py-[4px]">
                                                 <a
-                                                    href="{{ route('editar-status-suscripciones', ['id' => $suscripcion->id]) }}">
+                                                    href="{{ route('editar-suscrito', ['id' => $usuario->id]) }}">
                                                     <button class="btn-editar mb-1">Editar</button>
                                                 </a>
                                             </div>
 
                                             <div class="mt-1 px-3">
                                                 <a onclick="confirm('¿Estas Seguro de Eliminar El Tipo de Suscripcion?')||event.stopImmediatePropagation()"
-                                                    wire:click="destroy({{ $suscripcion->id }})"><button
+                                                    wire:click="destroy({{ $usuario->id }})"><button
                                                         class="btn btn-eliminar ">Eliminar</button> </a>
                                             </div>
 
@@ -142,9 +146,9 @@
                     @include('components.alerta-busqueda')
                 @endif
                 <div class="bg-gray-200">
-                    @if ($suscripciones->hasPages())
+                    @if ($usuarios->hasPages())
                         <div class="px-6 py-3 ">
-                            {{ $suscripciones->links() }}
+                            {{ $usuarios->links() }}
                         </div>
                     @endif
                 </div>

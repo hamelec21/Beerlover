@@ -22,15 +22,14 @@
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Dashboard</span>
                     </a>
                 </li>
-                {{--
+
                     <li>
-                        <a href="{{ route('show-suscripciones') }}"
+                        <a href="#"
                             class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
                             <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
                             <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Suscripciones</span>
                         </a>
                     </li>
-                    --}}
 
                 <li>
                     <a href="{{ route('ticket.show-tickets') }}"
@@ -39,18 +38,6 @@
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Tickets</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="{{ route('customer.show-cliente') }}"
-                        class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Flow</span>
-                    </a>
-                </li>
-
-
-
-
 
             </ul>
 

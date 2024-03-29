@@ -71,6 +71,36 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
+    public function scopeBuscar($query, $buscar)
+    {
+        if ($buscar === '') {
+            return;
+        }
+        return $query->where('name', 'like', '%' . $buscar . '%');
+    }
+
+    public function scopeStatus($query, $estado)
+    {
+        if ($estado === '') {
+            return;
+        }
+        return $query->where('usuario_status_id', 'like', '%' . $estado . '%');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //relaciones
     public function ticket()
     {

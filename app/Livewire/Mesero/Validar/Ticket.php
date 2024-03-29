@@ -9,6 +9,7 @@ use App\Models\Ticket as ModelsTicket;
 use App\Models\User;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
 
@@ -82,8 +83,6 @@ class Ticket extends Component
         return redirect()->route('socio.home'); //mesero.home
     }
 
-
-
     private function bloquearUsuarioEnLocal($user_id, $loc_id)
     {
         $bloqueo = Bloqueo::first();
@@ -122,7 +121,7 @@ class Ticket extends Component
         //  $this->reset(['codigo_ticket','ticket_status_id','users_id','locales_id']);
         $this->dispatch('render');
         $this->dispatch('bloqueado');
-        return redirect()->route('mesero.home');
+        return redirect()->route('socio.home');
     }
 
 
