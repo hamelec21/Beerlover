@@ -49,7 +49,6 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm ">
-
                                 <th class="py-3 px-6 text-left">ID</th>
                                 <th class="py-3 px-6 text-left">nombre</th>
                                 <th class="py-3 px-6 text-left">apellidos</th>
@@ -129,11 +128,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="mt-1 px-3">
-                                                <a onclick="confirm('¿Estas Seguro de Eliminar El Tipo de Suscripcion?')||event.stopImmediatePropagation()"
-                                                    wire:click="destroy({{ $usuario->id }})"><button
-                                                        class="btn btn-eliminar ">Eliminar</button> </a>
-                                            </div>
+
 
                                         </div>
                                     </td>

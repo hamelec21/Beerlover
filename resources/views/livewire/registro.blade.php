@@ -12,7 +12,6 @@
     </div>
     {{-- Fin de Alerta validacion del rut --}}
 
-
     <div class="container mx-auto w-full lg:w-1/2 mt-10 px-4">
         <form wire:submit.prevent="registro">
             <label for="name">Rut:</label>
@@ -40,6 +39,10 @@
             <label for="passwordConfirmation">Confirmar Contraseña:</label>
             <x-input type="password" class="block mt-1 w-full" wire:model="passwordConfirmation" />
             <x-input-error for="passwordConfirmation" />
+
+            <label for="name">Codigo Cupon:</label>
+            <x-input type="text" class="block mt-1 w-full" wire:model="codigo_cupon" />
+            <x-input-error for="codigo_cupon" />
 
             <button type="submit" class="text-gray-900 text-lg  font-bold  w-full px-8 py-2 rounded-lg mt-4 bg-yellow-400 hover:bg-green-600 shadow-md hover:text-white">Registrarse</button>
         </form>

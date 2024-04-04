@@ -34,9 +34,10 @@ class User extends Authenticatable
         'apellidos',
         'email',
         'usuario_status_id',
+        'codigo_cupon',
+        'plan_id',
         'password',
-        'customerId',
-        'qr_code'
+
     ];
 
     protected $table = "users";

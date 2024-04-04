@@ -17,9 +17,16 @@ use App\Livewire\QRAuth as LivewireQRAuth;
 |
 */
 
+Route::get('/mensaje', function () {
+    return view('mensaje');
+});
+
+
+
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/terminos-y-condiciones', function () {
     return view('terminos-y-condiciones');
 });

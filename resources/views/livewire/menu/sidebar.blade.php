@@ -24,7 +24,7 @@
                 </li>
 
                     <li>
-                        <a href="#"
+                        <a href="{{ route('show-suscritos') }}"
                             class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
                             <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
                             <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Suscripciones</span>
@@ -91,14 +91,14 @@
                     <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
                     <span class=" text-gray-600 group-hover:text-yellow-600 ">Módulo meseros</span>
                 </a>
-                    {{--
+
                         <a href="{{ route('show-planes') }}"
                         class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
                         <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo de Planes</span>
                     </a>
 
-                        --}}
+                        
 
                         {{--
                             <a href="{{ route('show-tipo-suscripciones') }}"

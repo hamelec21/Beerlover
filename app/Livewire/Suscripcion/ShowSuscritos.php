@@ -19,13 +19,7 @@ class ShowSuscritos extends Component
     {
         $this->resetPage();
     }
-
     protected $listeners = ['render' => 'render'];
-
-    public function destroy($id)
-    {
-      User::destroy($id);
-    }
 
     public function render()
     {
