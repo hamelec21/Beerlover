@@ -20,13 +20,17 @@
 
 
 
-            <label for="name">Nombre:</label>
+            <label for="name">Nombres:</label>
             <x-input type="text" class="block mt-1 w-full" wire:model="name" />
             <x-input-error for="name" />
 
-            <label for="name">apellidos:</label>
-            <x-input type="text" class="block mt-1 w-full" wire:model="apellidos" />
-            <x-input-error for="apellidos" />
+            <label for="name">Primer Apellido:</label>
+            <x-input type="text" class="block mt-1 w-full" wire:model="papellido" />
+            <x-input-error for="Primer Apellido" />
+
+            <label for="name">Segundo Apellido:</label>
+            <x-input type="text" class="block mt-1 w-full" wire:model="sapellido" />
+            <x-input-error for="Segundo Apellido" />
 
             <label for="email">Correo electrónico:</label>
             <x-input type="email" class="block mt-1 w-full" wire:model="email" />

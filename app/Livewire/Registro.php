@@ -12,7 +12,8 @@ class Registro extends Component
 {
     public $rut;
     public $name;
-    public $apellidos;
+    public $papellido;
+    public $sapellido;
     public $codigo_cupon;
     public $email;
     public $password;
@@ -22,7 +23,8 @@ class Registro extends Component
         $this->validate([
             'rut' => 'required',
             'name' => 'required',
-            'apellidos' => 'required',
+            'papellido' => 'required',
+            'sapellido' => 'required',
             'codigo_cupon'=>'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|same:passwordConfirmation', // Validar que las contraseñas sean iguales
@@ -31,7 +33,8 @@ class Registro extends Component
         $user = User::create([
             'rut' => $this->rut,
             'name' => $this->name,
-            'apellidos' => $this->apellidos,
+            'papellido' => $this->papellido,
+            'sapellido' => $this->sapellido,
             'email' => $this->email,
             'usuario_status_id' => 1,
             'plan_id' => 1,//free30

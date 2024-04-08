@@ -31,7 +31,8 @@ class User extends Authenticatable
     protected $fillable = [
         'rut',
         'name',
-        'apellidos',
+        'papellido',
+        'sapellido',
         'email',
         'usuario_status_id',
         'codigo_cupon',
