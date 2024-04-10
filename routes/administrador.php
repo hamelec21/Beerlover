@@ -1,5 +1,14 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
+Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
+    //creacion del customer
+    Route::get('cupone/show-cupones', \App\Livewire\Cupone\ShowCupones::class)->name('show-cupones');
+    Route::get('cupone/crear-cupon', \App\Livewire\Cupone\CrearCupon::class)->name('crear-cupon');
+    Route::get('cupone/editar-cupon/{id}', \App\Livewire\Cupone\EditarCupon::class)->name('editar-cupon');
+
+});
+
 //rutas de bloqueo
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
     //creacion del customer

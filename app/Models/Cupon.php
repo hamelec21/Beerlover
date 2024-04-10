@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Cupon extends Model
 {
     use HasFactory;
+    protected $table = 'cupones';
     protected $fillable=['nombre','codigo_cupon'];
+
+
+    public function scopeBuscar($query, $buscar)
+    {
+        if ($buscar === '') {
+            return;
+        }
+        return $query->where('nombre', 'like', '%' . $buscar . '%');
+    }
 
 }

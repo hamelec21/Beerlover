@@ -38,7 +38,13 @@
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Tickets</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{ route('show-cupones') }}"
+                        class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
+                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
+                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Campañas</span>
+                    </a>
+                </li>
             </ul>
 
             {{-- Item Parametros del sistema --}}
@@ -98,7 +104,7 @@
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo de Planes</span>
                     </a>
 
-                        
+
 
                         {{--
                             <a href="{{ route('show-tipo-suscripciones') }}"
