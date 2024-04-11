@@ -9,7 +9,7 @@ class Cupon extends Model
 {
     use HasFactory;
     protected $table = 'cupones';
-    protected $fillable=['nombre','codigo_cupon'];
+    protected $fillable=['nombre','codigo'];
 
 
     public function scopeBuscar($query, $buscar)
