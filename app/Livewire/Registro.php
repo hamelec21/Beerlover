@@ -20,10 +20,47 @@ class Registro extends Component
     public $password;
     public $cupon;
     public $passwordConfirmation; // Nueva propiedad
+    public $isValid = false;
+
+
+    public function updatedRut()
+    {
+        if ($this->rut) {
+            $this->isValid = $this->validarRut($this->rut);
+        } else {
+            $this->isValid = null;
+        }
+    }
+
+    public function validarRut($rut)
+    {
+        $rut = preg_replace('/[^k0-9]/i', '', $rut);
+        $dv = substr($rut, -1);
+        $numero = substr($rut, 0, strlen($rut) - 1);
+        $i = 2;
+        $suma = 0;
+        foreach (array_reverse(str_split($numero)) as $v)
+        {
+            if ($i == 8)
+                $i = 2;
+            $suma += $v * $i;
+            ++$i;
+        }
+        $dvr = 11 - ($suma % 11);
+        if ($dvr == 11)
+            $dvr = 0;
+        if ($dvr == 10)
+            $dvr = 'K';
+        if ($dvr == strtoupper($dv))
+            return true;
+        else
+            return false;
+    }
+
     public function registro()
     {
         $this->validate([
-            'rut' => 'required',
+            //'rut' => 'required',
             'name' => 'required',
             'papellido' => 'required',
             'sapellido' => 'required',
@@ -31,6 +68,13 @@ class Registro extends Component
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|same:passwordConfirmation',
         ]);
+
+
+        // Validación del RUT
+    if (!$this->validarRut($this->rut)) {
+        // Si el RUT no es válido, redirigir con un mensaje de error
+       return redirect()->back()->with('error', 'El RUT ingresado no es válido.');
+    }
 
         // Verificar si el código de cupón existe en la tabla de cupones
 
@@ -40,6 +84,8 @@ class Registro extends Component
             // Si el código de cupón no existe, redirigir con un mensaje de error
             return redirect()->back()->with('error', 'El código del cupón no es válido.');
         }
+
+
 
         // Si el código de cupón existe, crear el usuario
         $user = User::create([
@@ -63,6 +109,13 @@ class Registro extends Component
         // Si quieres redireccionar al dashboard socio después del registro
         // return redirect()->route('socio.home');
     }
+
+
+
+
+
+
+
 
 
     public function render()

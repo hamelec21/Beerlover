@@ -1,31 +1,29 @@
 <div>
     @include('header_front')
 
-    {{-- inicio de Alerta validacion del rut --}}
-    <div id="alerta" class="flex items-center  text-white text-sm font-bold px-4 py-2 " role="alert">
-        <span id="mensaje"></span>
-    </div>
-    {{-- inicio de Alerta validacion del rut --}}
-    <div id="alerta" class="flex items-center  text-white text-sm font-bold px-4 py-2 " role="alert">
-        <span id="mensaje"></span>
-    </div>
-
-
     {{-- Fin de Alerta validacion del rut --}}
-
-
     <div class="container mx-auto w-full lg:w-1/2 mt-10 px-4">
         @if (session('error'))
-        <div class="alert alert-danger ">
-            {{ session('error') }}
-        </div>
-    @endif
+            <div class="alert alert-danger ">
+                {{ session('error') }}
+            </div>
+        @endif
+
+
         <form wire:submit.prevent="registro">
-            <label for="name">Rut</label>
-            <x-input type="text" id="rut" onkeypress="return isNumber(event)" {{-- oninput="checkRut(this)" --}}
-                class="block mt-1 w-full" wire:model.defer="rut" onkeypress="return isNumber(event)"
-                placeholder="12.555.444-4" />
-            <x-input-error for="rut" />
+
+            <div>
+                <label for="name">Rut</label>
+                <x-input type="text" wire:model="rut" class="block mt-1 w-full"  id="rutInput" placeholder="Ingrese el RUT sin puntos ni guion "/>
+
+                @if ($rut && $isValid === true)
+                    <span style="color: green;">Válido</span>
+                @elseif ($rut && $isValid === false)
+                    <span style="color: red;">Inválido</span>
+                @endif
+            </div>
+
+
 
             <label for="name">Nombres</label>
             <x-input type="text" class="block mt-1 w-full" wire:model="name" />
@@ -60,9 +58,15 @@
         </form>
     </div>
 
-
-
-    <script src="{{ asset('js/validar_rut.js') }}"></script>
+    <script>
+        document.getElementById('rutInput').addEventListener('input', function (e) {
+            var rut = e.target.value.replace(/\D/g, '');
+            if (rut.length > 1) {
+                rut = rut.replace(/^(\d{1,2})(\d{0,3})(\d{0,3})(\d{0,1})/, '$1.$2.$3-$4');
+            }
+            e.target.value = rut;
+        });
+    </script>
 
 
 </div>

@@ -1,6 +1,6 @@
 // Capturando el DIV alerta y mensaje
-var alerta = document.getElementById("alerta");
-var mensaje = document.getElementById("mensaje");
+//var alerta = document.getElementById("alerta");
+//var mensaje = document.getElementById("mensaje");
 
 // Permitir sólo números en el imput
 function isNumber(evt) {
@@ -36,7 +36,7 @@ function checkRut(rut) {
         alerta.classList.remove("alert-success", "alert-danger");
         alerta.classList.add("alert-info");
         mensaje.innerHTML =
-            "Ingresó un RUT muy corto, el RUT debe ser mayor a 7 Dígitos. Ej: x.xxx.xxx-x";
+            "Ingresó un RUT muy corto, el RUT debe ser mayor a 7 Dígitos. Ej: xx.xxx.xxx-x";
         return false;
     }
 
