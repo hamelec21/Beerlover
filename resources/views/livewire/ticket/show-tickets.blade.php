@@ -53,6 +53,8 @@
                                 <th class="py-3 px-6 text-left">usuario</th>
                                 <th class="py-3 px-6 text-left">Comercio</th>
                                 <th class="py-3 px-6 text-left">fecha</th>
+                                <th class="py-3 px-6 text-left">Hora</th>
+                                <th class="py-3 px-6 text-left">Socio</th>
 
                             </tr>
                         </thead>
@@ -102,9 +104,23 @@
                                     </td>
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $ticket->created_at }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($ticket->created_at)->format('d/m/Y') }}
+                                            </span>
                                         </div>
                                     </td>
+
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>{{ \Carbon\Carbon::parse($ticket->created_at)->format('H:i:s') }}
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td class="py-1 px-6 text-center">
+                                        @livewire('usuario.show',['ticket'=>$ticket],key($ticket->id))
+                                    </td>
+
+
 
 
                                 </tr>
