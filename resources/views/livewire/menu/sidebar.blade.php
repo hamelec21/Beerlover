@@ -23,13 +23,13 @@
                     </a>
                 </li>
 
-                    <li>
-                        <a href="{{ route('show-suscritos') }}"
-                            class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                            <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                            <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Suscripciones</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href="{{ route('show-suscritos') }}"
+                        class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
+                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
+                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo Suscripciones</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ route('ticket.show-tickets') }}"
@@ -87,26 +87,28 @@
                     </a>
 
                     <a href="{{ route('show-bloqueo') }}"
-                    class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                    <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                    <span class=" text-gray-600 group-hover:text-yellow-600 ">Módulo bloqueo</span>
-                </a>
+                        class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
+                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
+                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Módulo bloqueo</span>
+                    </a>
 
-                <a href="{{ route('show-mesero') }}"
-                    class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                    <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                    <span class=" text-gray-600 group-hover:text-yellow-600 ">Módulo meseros</span>
-                </a>
+                    <a href="{{ route('show-mesero') }}"
+                        class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
+                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
+                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Módulo meseros</span>
+                    </a>
 
-                        <a href="{{ route('show-planes') }}"
+                    <a href="{{ route('show-planes') }}"
                         class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
                         <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo de Planes</span>
                     </a>
 
+                   
 
 
-                        {{--
+
+                    {{--
                             <a href="{{ route('show-tipo-suscripciones') }}"
                         class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
                         <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
@@ -114,7 +116,7 @@
                     </a>
                             --}}
 
-                        {{--
+                    {{--
                               <a href="{{ route('show-status-suscripciones') }}"
                         class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
                         <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
