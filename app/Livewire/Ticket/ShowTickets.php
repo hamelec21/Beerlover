@@ -6,13 +6,15 @@ use App\Models\Ticket;
 use App\Models\TicketStatu;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Carbon\Carbon;
+
+
 
 class ShowTickets extends Component
 {
     use WithPagination;
     public $search;
     public $filtro_estado;
-
     public function render()
     {
         $tickets =Ticket::buscar($this->search)
