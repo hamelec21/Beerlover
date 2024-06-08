@@ -26,13 +26,4 @@ class ShowTickets extends Component
         return view('livewire.ticket.show-tickets',compact('tickets','estados'));
     }
 
-
-
-   // $comercios = Local::comunas($this->filtro_comuna)
-  //  ->especialidad($this->filtro_especial)
-   // ->sector($this->filtro_sector)
-  // ->paginate(10);
-
-
-
 }
