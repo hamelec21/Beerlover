@@ -1,6 +1,13 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+
+Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
+    //show-usuario
+    Route::get('usuario/show/{id}', \App\Livewire\Usuario\Show::class)->name('show');
+
+});
+
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
     //creacion del customer
     Route::get('cupone/show-cupones', \App\Livewire\Cupone\ShowCupones::class)->name('show-cupones');
