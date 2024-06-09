@@ -47,14 +47,13 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm ">
-                                <th class="py-3 px-6 text-left">ID</th>
                                 <th class="py-3 px-6 text-left">Codigo</th>
                                 <th class="py-3 px-6 text-left">Estado</th>
                                 <th class="py-3 px-6 text-left">usuario</th>
                                 <th class="py-3 px-6 text-left">Comercio</th>
                                 <th class="py-3 px-6 text-left">fecha</th>
                                 <th class="py-3 px-6 text-left">Hora</th>
-                                <th class="py-3 px-6 text-left">Socio</th>
+                                <th class="py-3 px-6 text-left">Ver</th>
 
                             </tr>
                         </thead>
@@ -62,12 +61,6 @@
                         <tbody class="text-gray-600 text-sm font-light">
                             @foreach ($tickets as $ticket)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                    <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase">
-                                            <span>{{ $ticket->id }}</span>
-                                        </div>
-                                    </td>
-
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
                                             <span>{{ $ticket->codigo_ticket }}</span>
