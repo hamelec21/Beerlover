@@ -51,6 +51,9 @@
                                 <th class="py-3 px-6 text-left">Estado</th>
                                 <th class="py-3 px-6 text-left">usuario</th>
                                 <th class="py-3 px-6 text-left">Comercio</th>
+                                <th class="py-3 px-6 text-left">Especialidad</th>
+                                <th class="py-3 px-6 text-left">Sector</th>
+                                <th class="py-3 px-6 text-left">Comuna</th>
                                 <th class="py-3 px-6 text-left">fecha</th>
                                 <th class="py-3 px-6 text-left">Hora</th>
                                 <th class="py-3 px-6 text-left">Ver</th>
@@ -82,8 +85,6 @@
 
                                         </div>
 
-
-
                                     </td>
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
@@ -92,12 +93,28 @@
                                     </td>
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $ticket->local->nombre }}</span>
+                                            <span>{{ $ticket->local->nombre }}
+                                            </span>
                                         </div>
                                     </td>
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ \Carbon\Carbon::parse($ticket->created_at)->format('d/m/Y') }}
+                                            <span>{{ $ticket->especialidad->nombre }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>{{ $ticket->sector->nombre }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>{{ $ticket->comuna->nombre }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>{{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat('dddd, DD/MM/YYYY') }}
                                             </span>
                                         </div>
                                     </td>

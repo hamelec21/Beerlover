@@ -19,7 +19,13 @@ class Comuna extends Model
 
     //relaciones
     public function local()
-{
-  return $this->hasMany(Local::class, 'id');
-}
+    {
+        return $this->hasMany(Local::class, 'id');
+    }
+
+
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class, 'id');
+    }
 }

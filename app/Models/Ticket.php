@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable = ['codigo_ticket', 'ticket_status_id', 'users_id', 'locales_id','especialidades_id','comunas_id','sectores_id'];
+    protected $fillable = ['codigo_ticket', 'ticket_status_id', 'users_id', 'locales_id', 'especialidades_id', 'comunas_id', 'sectores_id'];
     use HasFactory;
 
     //scope para realizar busqueda por el nombre del local
@@ -32,21 +32,35 @@ class Ticket extends Model
     //Relaciones
     public function local()
     {
-      return $this->belongsTo(Local::class,'locales_id');
+        return $this->belongsTo(Local::class, 'locales_id');
     }
 
 
     public function usuario()
     {
-      return $this->belongsTo(User::class,'users_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 
     public function ticket_estado()
     {
-      return $this->belongsTo(TicketStatu::class,'ticket_status_id');
+        return $this->belongsTo(TicketStatu::class, 'ticket_status_id');
     }
 
 
+    public function especialidad()
+    {
+        return $this->belongsTo(Especialidad::class, 'especialidades_id');
+    }
 
 
+    public function sector()
+    {
+        return $this->belongsTo(Sector::class, 'sectores_id');
+    }
+
+
+    public function comuna()
+    {
+        return $this->belongsTo(Comuna::class, 'comunas_id');
+    }
 }
