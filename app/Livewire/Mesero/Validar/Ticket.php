@@ -74,6 +74,8 @@ class Ticket extends Component
             'comunas_id' => $this->loc->comunas_id,
             'sectores_id' => $this->loc->sectores_id,
             'created_at' =>now(),
+            'fecha_canje' =>now(),
+            'hora' => Carbon::now()->format('H:i:s'),
         ]);
         // Verificar si el ticket fue creado exitosamente
         if ($ticket) {
@@ -126,6 +128,8 @@ class Ticket extends Component
             'comunas_id' => $this->loc->comunas_id,
             'sectores_id' => $this->loc->sectores_id,
             'created_at' => Carbon::now(),
+            'fecha_canje' => Carbon::now(),
+            'hora' => Carbon::now()->format('H:i:s'),
         ]);
 
         //  $this->reset(['codigo_ticket','ticket_status_id','users_id','locales_id']);

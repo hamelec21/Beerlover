@@ -1,11 +1,14 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
+    //exporta a excel
+    Route::get('/exportar-tickets',\App\Livewire\ExportarTickets::class)->name('exportar-tickets');
+});
 
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {
     //show-usuario
     Route::get('usuario/show/{id}', \App\Livewire\Usuario\Show::class)->name('show');
-
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->group(function () {

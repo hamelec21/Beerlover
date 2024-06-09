@@ -114,14 +114,14 @@
                                     </td>
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ \Carbon\Carbon::parse($ticket->created_at)->locale('es')->isoFormat('dddd, DD/MM/YYYY') }}
+                                            <span>{{ \Carbon\Carbon::parse($ticket->fecha_canje)->locale('es')->isoFormat('dddd, DD/MM/YYYY') }}
                                             </span>
                                         </div>
                                     </td>
 
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ \Carbon\Carbon::parse($ticket->created_at)->format('H:i:s') }}
+                                            <span>{{ \Carbon\Carbon::parse($ticket->hora)->format('H:i:s') }}
                                             </span>
                                         </div>
                                     </td>
