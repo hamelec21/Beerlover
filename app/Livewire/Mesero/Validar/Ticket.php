@@ -7,6 +7,7 @@ use App\Models\Bloqueo;
 use App\Models\Local;
 use App\Models\Ticket as ModelsTicket;
 use App\Models\User;
+use Carbon\Carbon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ class Ticket extends Component
     {
        // dd($user_id,$id);
         $this->loc = Local::where('id', $id)->first();
+
 
         //consulta users
         //$this->socio = User::where('id', $user_id)->first();
@@ -68,6 +70,10 @@ class Ticket extends Component
             'ticket_status_id' => 1,
             'users_id' => $this->user_id,
             'locales_id' => $this->loc->id,
+            'especialidades_id' => $this->loc->especialidades_id,
+            'comunas_id' => $this->loc->comunas_id,
+            'sectores_id' => $this->loc->sectores_id,
+            'created_at' =>now(),
         ]);
         // Verificar si el ticket fue creado exitosamente
         if ($ticket) {
@@ -116,6 +122,10 @@ class Ticket extends Component
             'ticket_status_id' => 2,
             'users_id' => $this->user_id,
             'locales_id' => $this->loc->id,
+            'especialidades_id' => $this->loc->especialidades_id,
+            'comunas_id' => $this->loc->comunas_id,
+            'sectores_id' => $this->loc->sectores_id,
+            'created_at' => Carbon::now(),
         ]);
 
         //  $this->reset(['codigo_ticket','ticket_status_id','users_id','locales_id']);

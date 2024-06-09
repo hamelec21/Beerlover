@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable = ['codigo_ticket', 'ticket_status_id', 'users_id', 'locales_id'];
+    protected $fillable = ['codigo_ticket', 'ticket_status_id', 'users_id', 'locales_id','especialidades_id','comunas_id','sectores_id'];
     use HasFactory;
 
     //scope para realizar busqueda por el nombre del local
