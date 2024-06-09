@@ -37,7 +37,21 @@
                                         class="px-2">{{ $this->datosocio->email}}</span></div>
                         </div>
                     </div>
-
+                    <div class="mt-5">
+                        @if ($datosocio->usuario_status_id == 1)
+                            <span class="text-white bg-green-600 rounded-lg px-2 py-1">Registrado</span>
+                        @elseif($datosocio->usuario_status_id == 2)
+                            <span class="text-white bg-red-600 rounded-lg px-2 py-1">Pendiente</span>
+                        @elseif($datosocio->usuario_status_id == 3)
+                            <span class="text-white bg-blue-600 rounded-lg px-2 py-1">Activo</span>
+                        @elseif($datosocio->usuario_status_id == 4)
+                            <span class="text-white bg-yellow-500 rounded-lg px-2 py-1">Suspendido</span>
+                        @elseif($datosocio->usuario_status_id == 5)
+                            <span class="text-white bg-gray-600 rounded-lg px-2 py-1">Baja</span>
+                        @else
+                            <span class="text-gray-500">Sin Estado</span>
+                        @endif
+                    </div>
                 </div>
             </x-slot>
 
