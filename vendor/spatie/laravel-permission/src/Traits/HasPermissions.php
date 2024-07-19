@@ -89,7 +89,10 @@ trait HasPermissions
             return $relation;
         }
 
-        return $relation->wherePivot(app(PermissionRegistrar::class)->teamsKey, getPermissionsTeamId());
+        $teamsKey = app(PermissionRegistrar::class)->teamsKey;
+        $relation->withPivot($teamsKey);
+
+        return $relation->wherePivot($teamsKey, getPermissionsTeamId());
     }
 
     /**
@@ -231,6 +234,7 @@ trait HasPermissions
         }
 
         if ($permission instanceof Permission) {
+            $guardName = $permission->guard_name ?? $guardName;
             $permission = $permission->name;
         }
 
@@ -352,7 +356,7 @@ trait HasPermissions
     }
 
     /**
-     * Returns permissions ids as array keys
+     * Returns array of permissions ids
      *
      * @param  string|int|array|Permission|Collection|\BackedEnum  $permissions
      */
@@ -370,9 +374,10 @@ trait HasPermissions
                     return $array;
                 }
 
-                $this->ensureModelSharesGuard($permission);
-
-                $array[] = $permission->getKey();
+                if (! in_array($permission->getKey(), $array)) {
+                    $this->ensureModelSharesGuard($permission);
+                    $array[] = $permission->getKey();
+                }
 
                 return $array;
             }, []);
@@ -399,14 +404,16 @@ trait HasPermissions
             $model->unsetRelation('permissions');
         } else {
             $class = \get_class($model);
+            $saved = false;
 
             $class::saved(
-                function ($object) use ($permissions, $model, $teamPivot) {
-                    if ($model->getKey() != $object->getKey()) {
+                function ($object) use ($permissions, $model, $teamPivot, &$saved) {
+                    if ($saved || $model->getKey() != $object->getKey()) {
                         return;
                     }
                     $model->permissions()->attach($permissions, $teamPivot);
                     $model->unsetRelation('permissions');
+                    $saved = true;
                 }
             );
         }

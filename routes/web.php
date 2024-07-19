@@ -27,6 +27,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/nosotros', function () {
+    return view('nosotros');
+});
+
+Route::get('/terminos-y-condiciones', function () {
+    return view('terminos-y-condiciones');
+});
+
 Route::get('/terminos-y-condiciones', function () {
     return view('terminos-y-condiciones');
 });
@@ -42,6 +50,7 @@ Route::middleware([
 });
 
 //rutas Publicas
-Route::get('/frontend/restaurants', \App\Livewire\Frontend\Restaurants::class)->name('restaurants');
+Route::get('/comercio-asociados', \App\Livewire\ComercioAsociados::class)->name('comercio-asociados');
+Route::get('/comercio/{id}', \App\Livewire\Comercio::class)->name('comercio');
 //Registro de nuevo socio
 Route::get('/registro', \App\Livewire\Registro::class)->name('registro');

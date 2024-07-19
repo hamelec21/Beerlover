@@ -1,30 +1,41 @@
 <div>
-    @include('header')
+    @livewire('menu-segundario')
 
     <div class="container mx-auto mt-10">
-        <div class="w-full flex justify-center">
-            <div class="text-center mt-10">
-                {{--
-                    {{QrCode::size(150)->generate(route('socio.ticket', ['id' => $comercio->id]))}}
-                     --}}
+        <h1 class="text-center text-xl font-bold">Ticket Generado</h1>
+        <div class="px-4 mt-5 mb-5">
+            <div class="w-full flex justify-center bg-gray-100 py-10">
+                <div class="text-center">
+                    <div class="flex justify-center mt-5 mb-5">
+                        <div id="countdown">Tiempo restante: <span id="time">10</span> segundos</div>
+                    </div>
+
+                    {{ QrCode::size(200)->generate(route('validar.ticket', ['id' => $comercio->id,'user_id' => $this->user_id])) }}
+
+                    <div class="mt-4">
+                        <div class="text-lg font-bold">
+                            {{ $this->socio->name }} {{ $this->socio->papellido }}
+                        </div>
+
+                        <div class="mt-2">
+                         <span class="text-lg font-bold">Rut: </span>{{ $ultimoscuatrodigitos }}
+                        </div>
+
+                        <div class="mt-2">
+
+                            <span class="text-lg font-bold">
+                                Canje Por<br></span>
+                               <span class="bg-yellow-400  py-1 px-4">{{$this->comercio->cerveza}}</span>
+                           </div>
+                    </div>
 
 
-                {{ QrCode::size(150)->generate(route('validar.ticket', ['id' => $comercio->id,'user_id' => $this->user_id])) }}
+                </div>
             </div>
+
         </div>
 
-        <div class="flex justify-center mt-5">
-            <div id="countdown">Tiempo restante: <span id="time">10</span> segundos</div>
-        </div>
-
-
-
-        <div class="flex justify-center mt-10 px-4">
-            <a  href='{{ route('socio.home')}}'
-            class='block mt-2 w-full px-4 py-2  text-white font-medium  text-center  bg-red-600 rounded-[14px] hover:bg-red-700'>
-            Cancelar
-        </a>
-        </div>
+    </div>
 
 
 <script>

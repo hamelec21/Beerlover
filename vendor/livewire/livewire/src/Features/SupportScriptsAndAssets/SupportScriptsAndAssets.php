@@ -5,6 +5,7 @@ namespace Livewire\Features\SupportScriptsAndAssets;
 use Illuminate\Support\Facades\Blade;
 use function Livewire\store;
 use Livewire\ComponentHook;
+
 use function Livewire\on;
 
 class SupportScriptsAndAssets extends ComponentHook
@@ -13,6 +14,13 @@ class SupportScriptsAndAssets extends ComponentHook
 
     public static $countersByViewPath = [];
 
+    public static $renderedAssets = [];
+
+    public static function getAssets()
+    {
+        return static::$renderedAssets;
+    }
+
     public static function getUniqueBladeCompileTimeKey()
     {
         // Rather than using random strings as compile-time keys for blade directives,
@@ -20,7 +28,7 @@ class SupportScriptsAndAssets extends ComponentHook
         // from using load-balancers and such.
         // Therefore, we create a key based on the currently compiling view path and
         // number of already compiled directives here...
-        $viewPath = crc32(app('blade.compiler')->getPath());
+        $viewPath = crc32(app('blade.compiler')->getPath() ?? '');
 
         if (! isset(static::$countersByViewPath[$viewPath])) static::$countersByViewPath[$viewPath] = 0;
 
@@ -36,6 +44,7 @@ class SupportScriptsAndAssets extends ComponentHook
         on('flush-state', function () {
             static::$alreadyRunAssetKeys = [];
             static::$countersByViewPath = [];
+            static::$renderedAssets = [];
         });
 
         Blade::directive('script', function () {
@@ -119,7 +128,11 @@ class SupportScriptsAndAssets extends ComponentHook
 
         foreach (store($this->component)->get('assets', []) as $key => $assets) {
             if (! in_array($key, $alreadyRunAssetKeys)) {
-                $context->pushEffect('assets', $assets, $key);
+
+                // These will either get injected into the HTML if it's an initial page load
+                // or they will be added to the "assets" key in an ajax payload...
+                static::$renderedAssets[$key] = $assets;
+
                 $alreadyRunAssetKeys[] = $key;
             }
         }

@@ -36,8 +36,7 @@ class PermissionRegistrar
 
     public string $teamsKey;
 
-    /** @var int|string */
-    protected $teamId = null;
+    protected string|int|null $teamId = null;
 
     public string $cacheKey;
 
@@ -109,7 +108,7 @@ class PermissionRegistrar
     }
 
     /**
-     * @return int|string
+     * @return int|string|null
      */
     public function getPermissionsTeamId()
     {
@@ -145,7 +144,7 @@ class PermissionRegistrar
         return $this->cache->forget($this->cacheKey);
     }
 
-    public function forgetWildcardPermissionIndex(Model $record = null): void
+    public function forgetWildcardPermissionIndex(?Model $record = null): void
     {
         if ($record) {
             unset($this->wildcardPermissionsIndex[get_class($record)][$record->getKey()]);
@@ -173,6 +172,7 @@ class PermissionRegistrar
     public function clearPermissionsCollection(): void
     {
         $this->permissions = null;
+        $this->wildcardPermissionsIndex = [];
     }
 
     /**
@@ -187,7 +187,7 @@ class PermissionRegistrar
 
     /**
      * Load permissions from cache
-     * This get cache and turns array into \Illuminate\Database\Eloquent\Collection
+     * And turns permissions array into a \Illuminate\Database\Eloquent\Collection
      */
     private function loadPermissions(): void
     {

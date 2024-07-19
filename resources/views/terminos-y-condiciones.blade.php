@@ -17,15 +17,15 @@
 </head>
 
 <body class="bg-gray-100">
-    @include('header_front')
-    <div class="px-4">
-        <div class="container mx-auto bg-gray-200 flex justify-center items-center mt-10 rounded-lg  border-green-600 border">
-            <h1 class="uppercase font-bold p-4">Términos y Condiciones</h1>
+    @livewire('menu-segundario')
+    <div class="px-4 flex justify-center mt-10">
+        <div class="container mx-auto flex justify-center items-center mt-5">
+            <h1 class="uppercase font-bold">Términos y Condiciones</h1>
         </div>
     </div>
 
-    <div class="px-4 mt-10">
-        <div class="container mx-auto p-10 bg-gray-200 rounded-lg border-green-600 border">
+    <div class="px-4">
+        <div class="container mx-auto mt-10">
             <p class="text-justify text-lg">
                <b> Fecha última actualización: 31 de Enero de 2024
                 Los Términos y Condiciones constituyen su acuerdo con Beer Lover.
@@ -123,17 +123,9 @@
                 Los Suscriptores pueden eliminar su cuenta en cualquier momento. Para ello, deberán enviar su solicitud de eliminación de cuenta por correo electrónico a: soporte@beerlover.cl
             </p>
 
-
-
-
-
-
         </div>
     </div>
 
-
-
-    @include('footer')
 </body>
 
 </html>

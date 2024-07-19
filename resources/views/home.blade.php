@@ -1,69 +1,89 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <!-- Scripts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Effect Background</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Beer Lover</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <!-- Styles -->
-    @livewireStyles
+    <style>
+        @keyframes bubble {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-400px);
+                opacity: 0;
+            }
+        }
+
+        .bubble-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: 0;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(245, 216, 3, 0.7);
+            border-radius: 50%;
+            animation: bubble 3s infinite;
+            opacity: 0;
+        }
+
+        .bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+        .bubble:nth-child(3) { left: 30%; animation-delay: 1s; }
+        .bubble:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+        .bubble:nth-child(5) { left: 50%; animation-delay: 2s; }
+        .bubble:nth-child(6) { left: 60%; animation-delay: 2.5s; }
+        .bubble:nth-child(7) { left: 70%; animation-delay: 3s; }
+        .bubble:nth-child(8) { left: 80%; animation-delay: 3.5s; }
+        .bubble:nth-child(9) { left: 90%; animation-delay: 4s; }
+    </style>
 </head>
-
-<body class="bg-gray-100">
-    @include('header_front')
-
-    {{-- texto bienvenida --}}
-    <div class="px-4 mt-10">
-        <div class="container mx-auto">
-            <p class="text-justify text-lg mb-1 p-1">
-                <b class="text-xl uppercase">¿Cerveza gratis?</b> En <b>Beer Lover</b>, por el valor de una cerveza
-                puedes tener una gratis <b>¡CUANTAS VECES
-                    QUIERAS!</b>
-            </p>
-            <p class="text-justify text-lg  mb-1 p-1">
-                El funcionamiento es muy fácil, al ser socio de <b>Beer Lover</b> podrás acceder a la gran cantidad de
-                bares y
-                restoranes que te entregarán una cerveza siempre que cumplas con un consumo mínimo<b>(*)</b>
-            </p>
-            <p class="text-justify text-lg  mb-1 p-1">
-                Todos los socios tienen acceso a un código QR que los habilita como miembros, lo muestras al mesero ¡y
-                listo!
-            </p>
-
-            <p class="text-justify text-lg mb-1">
-                Te invitamos a ser parte de esta comunidad, participa con tus amigos y disfruten todos los días de una
-                rica cerveza.
-            </p>
-            <p class="text-justify text-lg mt-2">
-                <b>(*) La cerveza y el consumo dependen de cada local y está informada en nuestra plataforma.</b>
-            </p>
-        </div>
-    </div>
-    {{-- moestrar los restaurantes asociados  --}}
-    @livewire('frontend.restaurants')
-
-    <div class="px-4 mt-10">
-        <div class="container mx-auto">
-
-            <button
-                class=" text-white text-lg  font-bold  w-full px-8 py-2 rounded-lg mt-4 bg-green-600 hover:bg-green-700 ">
-                <a href="/login"> {{ __('Ingresar') }}</a>
-            </button>
-
-        </div>
+<body class="flex items-center justify-center h-screen bg-green-600 relative">
+    <div class="bubble-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
 
+    <div class="relative flex flex-col items-center">
+        <img src="{{ asset('img/logo/logo_beerlover.png') }}" class="w-44 md:w-36 lg:w-44 xl:w-44 mb-8">
+        <button id="statusButton" class="bg-gray-900 text-white px-8 py-2 rounded-lg mt-4 hover:bg-gray-700 shadow-md">
+            Ingresar
+        </button>
+    </div>
 
-    @include('footer')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const button = document.getElementById('statusButton');
 
-    @livewireScripts
+            // Function to change the button color after 3 seconds
+            function changeButtonColor() {
+                button.classList.remove('bg-gray-900');
+                button.classList.add('bg-yellow-400');
+                button.textContent = 'Ingresar';
+            }
+
+            // Set a timeout to change the button color
+            setTimeout(changeButtonColor, 3000);
+        });
+    </script>
 </body>
-
 </html>

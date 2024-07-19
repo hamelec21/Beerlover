@@ -91,7 +91,7 @@
                                         <div class='flex-col'>
                                             <div class="mt-2">
                                                 <p class='text-md font-bold text-gray-700 text-center underline'>Horario
-                                                    de Atención</p>
+                                                    de Canje</p>
                                             </div>
 
                                             <div class="flex justify-center mt-2">

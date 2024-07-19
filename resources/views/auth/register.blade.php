@@ -2,7 +2,7 @@
     @include('header')
     <x-validation-errors class="mb-4" />
 
-    <div class="container mx-auto w-full lg:w-1/2 mt-10 px-4">
+    <div class="container mx-auto w-full lg:w-1/2 mt-10 px-4 ">
         <form method="POST" action="{{ route('register') }}">
             @csrf
 

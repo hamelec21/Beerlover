@@ -4,6 +4,7 @@ namespace App\Livewire\Socio;
 
 use App\Models\BlockedUser;
 use App\Models\Local;
+use App\Models\User;
 use Livewire\Component;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -12,6 +13,8 @@ class Qr extends Component
     public $id;
     public $comercio;
     public $user_id;
+    public $socio;
+    Public $sociorut,$ultimoscuatrodigitos;
 
     public function mount($id)
     {
@@ -19,6 +22,15 @@ class Qr extends Component
         $this->id = $id;
         $this->comercio = Local::where('id', $this->id)->first();
         $this->user_id = auth()->user()->id;
+
+            $this->socio = User::find($this->user_id);
+          $this->sociorut = $this->socio->rut;
+          $rutSinFormato = str_replace(['.', '-'], '', $this->sociorut);
+          $this->ultimoscuatrodigitos = substr($rutSinFormato, -5, 4);
+
+
+
+
 
         if ($this->comercio) {
             $blockedUser = BlockedUser::where('user_id', $this->user_id)
