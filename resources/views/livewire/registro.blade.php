@@ -77,5 +77,5 @@
         });
     </script>
 
-
+@livewire('footer')
 </div>

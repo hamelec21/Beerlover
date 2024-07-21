@@ -24,7 +24,7 @@
 
 
 
-
+@livewire('footer')
 
     @livewireScripts
 </body>

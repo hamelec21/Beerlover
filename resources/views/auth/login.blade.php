@@ -122,10 +122,11 @@
                 </button>
                 </div>
 
-
             </form>
         </div>
     </div>
+
+    @livewire('footer')
 
 
 </x-guest-layout>

@@ -125,6 +125,7 @@
 
         </div>
     </div>
+    @livewire('footer')
 
 </body>
 

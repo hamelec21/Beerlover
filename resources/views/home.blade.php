@@ -65,9 +65,11 @@
 
     <div class="relative flex flex-col items-center">
         <img src="{{ asset('img/logo/logo_beerlover.png') }}" class="w-44 md:w-36 lg:w-44 xl:w-44 mb-8">
+        <a href="/comercio-asociados">
         <button id="statusButton" class="bg-gray-900 text-white px-8 py-2 rounded-lg mt-4 hover:bg-gray-700 shadow-md">
             Ingresar
         </button>
+        </a>
     </div>
 
     <script>

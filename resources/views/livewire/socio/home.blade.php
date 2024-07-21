@@ -12,7 +12,7 @@
 
     </div>
     <!--filtros de busqueda-->
-    
+
     <div class="w-full bg-gray-100 mt-2 py-4 px-4">
         <div class="grid grid-cols-3 gap-4">
 
@@ -20,9 +20,9 @@
                 <label class="text-md">Comuna</label>
                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" type="text"
                     wire:model.live="filtro_comuna" />
-                <option>Selecccione</option>
+                <option class="">---------</option>
                 @foreach ($comunas as $comuna)
-                    <option value="{{ $comuna->id }}" class="uppercase">{{ $comuna->nombre }}</option>
+                    <option value="{{ $comuna->id }}" class="text-[12px]">{{ $comuna->nombre }}</option>
                 @endforeach
                 </select>
             </div>
@@ -32,7 +32,7 @@
                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" type="text"
                     wire:model.live="filtro_sector" />
 
-                <option value="">Selecccione</option>
+                <option value="">---------</option>
                 if($sector == "")
                 @foreach ($sectores as $sector)
                     <option value="{{ $sector->id }}" class="uppercase">{{ $sector->nombre }}</option>
@@ -43,7 +43,7 @@
                 <label class="text-md">Especialidad</label>
                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" type="text"
                     wire:model.live="filtro_especial" />
-                <option value="" class="uppercase">Selecccione</option>
+                <option value="" class="uppercase">---------</option>
                 @foreach ($especialidades as $especialidad)
                     <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
                 @endforeach
@@ -68,12 +68,12 @@
                             {{ $comercio->nombre }}
                         </span>
                         <div class="flex justify-between w-full mt-4">
-                            <button class="px-0 py-1 bg-green-600 text-white rounded sm:w-1/2 w-full mx-1 text-[10px]">
-                                <a href="{{ route('comercio', ['id' => $comercio->id]) }}">
+                            <button class="px-0 py-2.5 bg-green-600 text-white rounded sm:w-1/2 w-full mx-1 text-[12px]">
+                                <a href="{{ route('socio.comercio', ['id' => $comercio->id]) }}">
                                     Más Información
                                 </a>
                             </button>
-                            <button class="px-0 py-1 bg-yellow-400 text-white rounded sm:w-1/2 w-full mx-1 text-[10px]">
+                            <button class="px-0 py-2.5 bg-yellow-400 text-white rounded sm:w-1/2 w-full mx-1 text-[12px]">
                                 <a href='{{ route('socio.qr', ['id' => $comercio->id]) }}'>
                                     Crear Ticket
                                 </a>
@@ -108,7 +108,7 @@
 
 
 
-
+@livewire('footer')
 
 
 </div>

@@ -15,7 +15,7 @@
                 <label class="text-md">Comuna</label>
                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" type="text"
                     wire:model.live="filtro_comuna" />
-                <option>Selecccione</option>
+                <option>---------</option>
                 @foreach ($comunas as $comuna)
                     <option value="{{ $comuna->id }}" class="uppercase">{{ $comuna->nombre }}</option>
                 @endforeach
@@ -27,7 +27,7 @@
                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" type="text"
                     wire:model.live="filtro_sector" />
 
-                <option value="">Selecccione</option>
+                <option value="">---------</option>
                 if($sector == "")
                 @foreach ($sectores as $sector)
                     <option value="{{ $sector->id }}" class="uppercase">{{ $sector->nombre }}</option>
@@ -38,7 +38,7 @@
                 <label class="text-md">Especialidad</label>
                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" type="text"
                     wire:model.live="filtro_especial" />
-                <option value="" class="uppercase">Selecccione</option>
+                <option value="" class="uppercase">---------</option>
                 @foreach ($especialidades as $especialidad)
                     <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>
                 @endforeach
@@ -81,10 +81,6 @@
 
 
 
-
-
-
-
     <div class="bg-gray-200">
         @if ($comercios->hasPages())
             <div class="px-6 py-3 ">
@@ -92,4 +88,14 @@
             </div>
         @endif
     </div>
+
+
+    @livewire('footer')
+
+
+
+
 </div>
+
+
+
