@@ -13,3 +13,6 @@ Route::middleware(['auth:sanctum', 'verified', 'role:socio'])->group(function ()
 });
 
 Route::get('/socio/home', \App\Livewire\Socio\Home::class)->name('socio.home');
+
+
+Route::get('/busquedas/buscarhomemenusocio', App\Livewire\Busquedas\buscarhomemenu::class)->name('buscarhomemenusocio');

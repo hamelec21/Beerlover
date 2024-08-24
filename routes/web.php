@@ -54,3 +54,6 @@ Route::get('/comercio-asociados', \App\Livewire\ComercioAsociados::class)->name(
 Route::get('/comercio/{id}', \App\Livewire\Comercio::class)->name('comercio');
 //Registro de nuevo socio
 Route::get('/registro', \App\Livewire\Registro::class)->name('registro');
+
+Route::get('/busquedas/buscarhomemenu', App\Livewire\Busquedas\buscarhomemenu::class)->name('buscarhomemenu');
+

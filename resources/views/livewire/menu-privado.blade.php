@@ -10,7 +10,7 @@
             </div>
 
             <div class="w-3/4 lg:w-full">
-                @livewire('busquedas.buscarhomemenu')
+                @livewire('busquedas.buscarhomemenusocio')
             </div>
 
         </div>
@@ -19,3 +19,4 @@
 
 
 </div>
+
