@@ -65,27 +65,19 @@
 
     <div class="relative flex flex-col items-center">
         <img src="{{ asset('img/logo/logo_beerlover.png') }}" class="w-44 md:w-36 lg:w-44 xl:w-44 mb-8">
-        <a href="/comercio-asociados">
-        <button id="statusButton" class="bg-gray-900 text-white px-8 py-2 rounded-lg mt-4 hover:bg-gray-700 shadow-md">
-            Ingresar
-        </button>
-        </a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const button = document.getElementById('statusButton');
-
-            // Function to change the button color after 3 seconds
-            function changeButtonColor() {
-                button.classList.remove('bg-gray-900');
-                button.classList.add('bg-yellow-400');
-                button.textContent = 'Ingresar';
+            // Function to redirect after 3 seconds
+            function redirectToHome() {
+                window.location.href = '/comercio-asociados';
             }
 
-            // Set a timeout to change the button color
-            setTimeout(changeButtonColor, 3000);
+            // Set a timeout to redirect after 3 seconds
+            setTimeout(redirectToHome, 3000);
         });
     </script>
+
 </body>
 </html>
