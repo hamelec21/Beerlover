@@ -12,7 +12,6 @@
             <div class="w-full lg:w-1/2 order-3 lg:order-2 py-2 lg:py-0 mb-5 lg:mb-0 ">
                 @livewire('busquedas.buscarhomemenu')
             </div>
-
             <!-- Buttons Section -->
             <div class="flex justify-center lg:justify-end items-center space-x-4 w-full lg:w-1/4 py-2 lg:py-0 order-2 lg:order-3">
                 <a href="/registro">
@@ -20,7 +19,6 @@
                         <span class="text-white">Registrarse</span>
                     </button>
                 </a>
-
                 <a href="/login">
                 <button class="bg-yellow-500 rounded-xl px-4 py-1 w-40 lg:w-40">
                     <span class="text-white">Inicio de Sesión</span>
