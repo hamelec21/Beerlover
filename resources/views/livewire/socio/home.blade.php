@@ -1,8 +1,6 @@
 <div>
-
     @livewire('menu-privado')
     <!--buscador-->
-
     <!--locales asociados-->
     <div class="container mx-auto mt-4 py-2 rounded-md text-gray-900">
 

@@ -31,8 +31,7 @@ class User extends Authenticatable
     protected $fillable = [
         'rut',
         'name',
-        'papellido',
-        'sapellido',
+        'apellidos',
         'email',
         'usuario_status_id',
         'codigo_cupon',
@@ -42,6 +41,29 @@ class User extends Authenticatable
     ];
 
     protected $table = "users";
+
+    public function getFirstNameAttribute()
+    {
+        return explode(' ', $this->name)[0];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * The attributes that should be hidden for serialization.
