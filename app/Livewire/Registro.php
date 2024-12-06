@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class Registro extends Component
 {
@@ -19,10 +20,19 @@ class Registro extends Component
     public $isValid = false;
     public $codigo_cupon = 'invitado';
     public $tieneCupon = 'no';
-
+    public $esMayorEdad = null;  // Estado del radio button
     public function updatedRut()
     {
         $this->isValid = $this->rut ? $this->validarRut($this->rut) : null;
+    }
+
+
+    public function updatedEsMayorEdad($value)
+    {
+        // Si el usuario selecciona "No", redirigir al home
+        if ($value === 'no') {
+            return Redirect::to('/');
+        }
     }
 
 
@@ -31,8 +41,6 @@ class Registro extends Component
         // Actualiza el valor del código del cupón dependiendo de la opción seleccionada
         $this->codigo_cupon = ($valor === 'si') ? '' : 'invitado';
     }
-
-
 
     public function validarRut($rut)
     {
