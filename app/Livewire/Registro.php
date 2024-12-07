@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NuevoUsuarioRegistrado;
 
 class Registro extends Component
 {
@@ -102,6 +104,8 @@ class Registro extends Component
         ]);
 
         $user->roles()->sync('2');
+
+        Mail::to('hello@example.com')->send(new NuevoUsuarioRegistrado($user));
 
         return redirect('mensaje');
 
