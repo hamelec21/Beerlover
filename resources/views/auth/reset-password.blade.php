@@ -33,4 +33,6 @@
             </div>
         </form>
     </x-authentication-card>
+
+    @livewire('footer')
 </x-guest-layout>

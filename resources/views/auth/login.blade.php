@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     <div class="px-4 -mt-14 lg:mt-14 container mx-auto w-full lg:w-1/2 min-h-screen flex items-center justify-center ">
-        <div class="flex flex-col justify-center bg-gray-200 relative w-full   border border-gray-300">
+        <div class="flex flex-col justify-center bg-gray-200 relative w-full   border border-gray-300 rounded-lg">
             <div class="absolute top-[-50px] left-1/2 transform -translate-x-1/2">
                 <img src="{{asset('img/logo/vaso.png') }}" class="w-20">
             </div>

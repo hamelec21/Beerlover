@@ -37,6 +37,7 @@ class User extends Authenticatable
         'codigo_cupon',
         'plan_id',
         'password',
+        'tc',
 
     ];
 

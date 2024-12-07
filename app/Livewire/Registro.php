@@ -21,25 +21,24 @@ class Registro extends Component
     public $codigo_cupon = 'invitado';
     public $tieneCupon = 'no';
     public $esMayorEdad = null;  // Estado del radio button
-    public function updatedRut()
+    public $acepto='false';
+
+
+
+    public function updatedAcepto($value)
     {
-        $this->isValid = $this->rut ? $this->validarRut($this->rut) : null;
+        $this->acepto = $value ? 'si' : '';
     }
-
-
-    public function updatedEsMayorEdad($value)
-    {
-        // Si el usuario selecciona "No", redirigir al home
-        if ($value === 'no') {
-            return Redirect::to('/');
-        }
-    }
-
-
     public function actualizarCodigoCupon($valor)
     {
         // Actualiza el valor del código del cupón dependiendo de la opción seleccionada
         $this->codigo_cupon = ($valor === 'si') ? '' : 'invitado';
+    }
+
+
+    public function updatedRut()
+    {
+        $this->isValid = $this->rut ? $this->validarRut($this->rut) : null;
     }
 
     public function validarRut($rut)
@@ -68,6 +67,8 @@ class Registro extends Component
             'apellidos' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|same:passwordConfirmation',
+            'acepto'=>'required',
+
         ]);
 
         if (!$this->validarRut($this->rut)) {
@@ -97,6 +98,7 @@ class Registro extends Component
             'plan_id' => 1, // Ajustar el plan según el cupón si es necesario
             'codigo_cupon' => $this->codigo_cupon,
             'password' => Hash::make($this->password),
+            'tc'=> $this->acepto,
         ]);
 
         $user->roles()->sync('2');

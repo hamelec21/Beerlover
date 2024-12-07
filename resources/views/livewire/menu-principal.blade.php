@@ -17,7 +17,7 @@
 
             <a href="/login">
                 <button class="bg-yellow-400 rounded-xl px-4 py-1 w-25">
-                    <span class="text-white">Iniciar Sesión</span>
+                    <span class="text-gray-900">Iniciar Sesión</span>
                 </button>
             </a>
         </div>

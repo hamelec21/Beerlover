@@ -19,17 +19,25 @@
 <body class="bg-gray-100">
     @include('header_front')
 
-    {{-- texto bienvenida --}}
-    <div class="px-4 mt-10">
-        <div class="container mx-auto">
-            <p class="text-justify text-lg mb-1 p-1">
-                <b class="text-xl uppercase">¿Cerveza gratis?</b> En <b>Beer Lover</b>, por el valor de una cerveza
-                puedes tener una gratis <b>¡CUANTAS VECES
-                    QUIERAS!</b>
-            </p>
 
-    {{-- moestrar los restaurantes asociados  --}}
-    @livewireScripts
+    <div class="flex justify-center mt-32">
+        <img src="{{ asset('img/logo/logo_beerlover.png') }}" class="w-28">
+    </div>
+    {{-- texto bienvenida --}}
+    <div class="flex items-center justify-center mt-20 bg-gray-100 w-full">
+        <div class="bg-yellow-300 px-2 py-6 md:px-6 lg:px-8 mx-2 md:mx-auto max-w-md md:max-w-2xl rounded-lg">
+            <h1 class="text-center mb-5 font-bold text-xl">Bienvenidos a Beer Lover</h1>
+            <p class="text-center text-lg mb-1 p-1">
+                Tu usuario ha sido creado. Revisa tu correo registrado, pronto te enviaremos un enlace de pago.
+
+            </p>
+            {{-- mostrar los restaurantes asociados --}}
+        </div>
+    </div>
+
+
+        @livewireScripts
+
     <script type="text/javascript">
         // Función para redirigir a la vista 'home' después de 10 segundos
         function redirectToHome() {
@@ -39,7 +47,8 @@
         }
         // Llama a la función cuando la página haya cargado
         window.onload = redirectToHome;
-    </script>
+    </script> 
+
 
 </body>
 
