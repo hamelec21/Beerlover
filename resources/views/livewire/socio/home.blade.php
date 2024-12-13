@@ -64,18 +64,23 @@
                                 {{ $comercio->nombre }}
                             </span>
                             <div class="flex justify-between w-full mt-4">
+
+                                
                                 <button
                                     class="px-0 py-2.5 bg-green-600 text-white rounded sm:w-1/2 w-full mx-1 text-[12px]">
                                     <a href="{{ route('socio.comercio', ['id' => $comercio->id]) }}">
                                         Más Información
                                     </a>
                                 </button>
+
                                 <button
                                     class="px-0 py-2.5 bg-yellow-400 text-white rounded sm:w-1/2 w-full mx-1 text-[12px]">
                                     <a href='{{ route('socio.qr', ['id' => $comercio->id]) }}'>
                                         Crear Ticket
                                     </a>
                                 </button>
+
+
                             </div>
                         </div>
 
@@ -95,8 +100,6 @@
             </div>
         @endif
     </div>
-
-
 
 @livewire('footer')
 

@@ -29,7 +29,6 @@
                         </div>
                     </div>
 
-
                 </div>
             </div>
 
@@ -38,7 +37,6 @@
         @livewire('footer')
 
     </div>
-
 
     <script>
         var timeLeft = 10; // Tiempo en segundos
