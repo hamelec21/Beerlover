@@ -104,7 +104,7 @@
                         <span class=" text-gray-600 group-hover:text-yellow-600 ">Modulo de Planes</span>
                     </a>
 
-                   
+
 
 
 
@@ -128,31 +128,23 @@
                 </li>
             </ul>
 
-            {{-- Item seguridad
-            <div class="relative px-4 py-1 flex items-center space-x-4 rounded-xl text-white bg-gray-900">
-                <i class="fas fa-th"></i>
-                <span class="-mr-1 font-medium">Seguridad del Sistema</span>
-            </div>
-            <ul class="space-y-2 tracking-wide mt-1">
-                <li>
-                    <a href="/roles" class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Roles</span>
-                    </a>
-                    <a href="/permissions" class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Permisos</span>
-                    </a>
-                    <a href="/users" class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
-                        <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
-                        <span class=" text-gray-600 group-hover:text-yellow-600 ">Usuarios</span>
-                    </a>
-                </li>
-            </ul>
---}}
-
-
         </div>
+
+
+        <div class="relative px-4 py-1 flex items-center space-x-4 rounded-xl text-white bg-gray-900">
+            <i class="fas fa-th"></i>
+            <span class="-mr-1 font-medium">Exportar Datos</span>
+        </div>
+        <ul class="space-y-2 tracking-wide mt-1">
+            <li>
+                <a href="{{ route('exportar-tickets') }}"
+                    class="px-4 py-1 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <i class="fas fa-chevron-circle-right text-gray-600 group-hover:text-yellow-600"></i>
+                    <span class=" text-gray-600 group-hover:text-yellow-600 ">Exportar Tickets</span>
+                </a>
+            </li>
+        </ul>
+
         <form method="POST" action="{{ route('logout') }}" x-data>
             @csrf
             <div class="px-6 -mx-6 pt-4 flex justify-between items-center border-t">

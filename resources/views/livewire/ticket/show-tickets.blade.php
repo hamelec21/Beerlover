@@ -11,22 +11,12 @@
                 <div class="mt-5 flex  bg-gray-100 font-sans overflow-hidden rounded-lg">
                     <div class="w-full">
                         {{-- seccion de busqueda --}}
-                        <div class="flex justify-around bg-gray-200 items-center  py-3">
-                            <div class=" text-left text-gray-900 font-bold py-1 text-sm ">
-                                <input wire:model.live="search" type="text" name="titulo" id=""
-                                    placeholder="Busqueda"
-                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-blue-600 w-full py-1 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                                @error('titulo')
-                                    <span class="error text-red-600 text-xs">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <!--boton de crear-->
-
+                        <div class="flex justify-around bg-gray-200 items-center item-center  py-3">
                             <div>
-                                <label class="text-md">Estado Ticket</label>
-                                <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase"
+                                <label class="text-md"></label>
+                                <select id="" class="py-1.5 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase"
                                     type="text" wire:model.live="filtro_estado" />
-                                <option value="">Selecccione</option>
+                                <option value="">Selecccione Estado ticket</option>
                                   @foreach ($estados as $estado)
                                         <option value="{{ $estado->id }}" class="uppercase">{{ $estado->nombre }}
                                         </option>
@@ -34,6 +24,21 @@
 
                                 </select>
                             </div>
+
+                            <div class=" text-left text-gray-900 font-bold py-1 text-sm  w-1/2">
+                                <input wire:model.live="search" type="text" name="titulo" id=""
+                                    placeholder="Busqueda"
+                                    class=" rounded-lg border-transparent flex-1  appearance-none border border-blue-900 w-full py-1 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                                @error('titulo')
+                                    <span class="error text-red-600 text-xs">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="flex justify-center items-center">
+                                <button  wire:click="exportToExcel" class="self-center  bg-gray-800 text-white px-4 py-1.5 rounded">Exportar a Excel</button>
+                            </div>
+
+
                         </div>
                         <!--tabla de contenido-->
                     </div>
@@ -41,7 +46,7 @@
             </div>
         </div>
         <!--tabla-->
-        <div class="container mx-auto">
+        <div class="container mx-auto overflow-auto">
             <div class="bg-white shadow-md rounded my-6 ">
                 @if ($tickets->count())
                     <table class="min-w-max w-full table-auto">
@@ -49,7 +54,9 @@
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm ">
                                 <th class="py-3 px-6 text-left">Codigo</th>
                                 <th class="py-3 px-6 text-left">Estado</th>
-                                <th class="py-3 px-6 text-left">usuario</th>
+                                <th class="py-3 px-6 text-left">Usuario</th>
+                                <th class="py-3 px-6 text-left">Correo</th>
+                                <th class="py-3 px-6 text-left">Telefono</th>
                                 <th class="py-3 px-6 text-left">Comercio</th>
                                 <th class="py-3 px-6 text-left">Especialidad</th>
                                 <th class="py-3 px-6 text-left">Sector</th>
@@ -89,6 +96,18 @@
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
                                             <span>{{ $ticket->usuario->name }} {{ $ticket->usuario->apellidos }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>{{ $ticket->usuario->email }}
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>{{ $ticket->usuario->phone }}
+                                            </span>
                                         </div>
                                     </td>
                                     <td class="py-1 px-6 text-center">
