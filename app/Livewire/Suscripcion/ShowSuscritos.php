@@ -7,6 +7,8 @@ use App\Models\UsuarioStatu;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsuariosExport;
 
 class ShowSuscritos extends Component
 {
@@ -20,6 +22,19 @@ class ShowSuscritos extends Component
         $this->resetPage();
     }
     protected $listeners = ['render' => 'render'];
+
+
+    //Exportar a Excel
+
+    public function exportUsuariosToExcel()
+    {
+        // Llama a la clase UsuariosExport y descarga el archivo Excel
+        return Excel::download(new UsuariosExport, 'usuarios.xlsx');
+    }
+
+
+
+
 
     public function render()
     {

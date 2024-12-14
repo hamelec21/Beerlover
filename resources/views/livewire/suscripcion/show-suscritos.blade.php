@@ -13,15 +13,6 @@
 
                         {{-- seccion de busqueda --}}
                         <div class="flex justify-around bg-gray-200 items-center  py-3">
-
-                            <div class=" text-left text-gray-900 font-bold py-1 text-sm ">
-                                <input wire:model.live="search" type="text" name="titulo" id=""
-                                    placeholder="Busqueda"
-                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-blue-600 w-full py-1 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                                @error('titulo')
-                                    <span class="error text-red-600 text-xs">{{ $message }}</span>
-                                @enderror
-                            </div>
                             <div>
                                 <select id="" class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase"
                                     type="text" wire:model.live="filtro_estado" />
@@ -31,6 +22,25 @@
                                 @endforeach
                                 </select>
                             </div>
+
+                            <div class=" text-left text-gray-900 font-bold py-1 text-sm w-1/2 ">
+                                <input wire:model.live="search" type="text" name="titulo" id=""
+                                    placeholder="Busqueda"
+                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-blue-600 w-full py-1 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                                @error('titulo')
+                                    <span class="error text-red-600 text-xs">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+
+
+                            <div>
+                                <div class="flex justify-center items-center">
+                                    <button  wire:click="exportUsuariosToExcel" class="self-center  bg-gray-800 text-white px-4 py-1.5 rounded">Exportar a Excel</button>
+                                </div>
+                            </div>
+
+
                         </div>
 
                         <!--tabla de contenido-->
