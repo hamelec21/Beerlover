@@ -6,6 +6,7 @@ use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Carbon\Carbon;
 
 class UsuariosExport implements FromCollection, WithHeadings, WithMapping
 {
@@ -17,7 +18,7 @@ class UsuariosExport implements FromCollection, WithHeadings, WithMapping
     public function collection()
     {
         // Filtra los usuarios que tienen el rol "Socio"
-        return User::role('SOCIO')->get();
+        return User::role('SOCIO')->with('estadoUsuario')->get();
     }
 
     /**
@@ -29,13 +30,15 @@ class UsuariosExport implements FromCollection, WithHeadings, WithMapping
     {
         return [
             'ID',
+            'Rut',
             'Nombre',
             'Apellidos',
             'Correo Electrónico',
             'phone',
             'Rol', // Ahora podemos exportar el rol
-            'Fecha de Creación',
-            'Fecha de Última Actualización',
+            'Estado',
+            'Fecha de Registro',
+
         ];
     }
 
@@ -50,14 +53,17 @@ class UsuariosExport implements FromCollection, WithHeadings, WithMapping
         // Aquí obtenemos el rol asignado usando Spatie
         $roles = $user->getRoleNames()->implode(', '); // En caso de que tenga más de un rol
 
+
         return [
             $user->id,
+            $user->rut,
             $user->name,
+            $user->apellidos,
             $user->email,
             $user->phone,
             $roles, // Mostramos el rol(s) del usuario
-            $user->created_at,
-            $user->updated_at,
+            $user->estadoUsuario ? $user->estadoUsuario->nombre : 'Sin Estado', // Obtenemos el nombre del estado
+            Carbon::parse($user->created_at)->format('d/m/Y'), // Formato de fecha
         ];
     }
 }

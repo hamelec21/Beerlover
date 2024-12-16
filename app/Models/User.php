@@ -28,55 +28,21 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $fillable = [
-        'rut',
-        'name',
-        'apellidos',
-        'email',
-        'usuario_status_id',
-        'codigo_cupon',
-        'plan_id',
-        'password',
-        'tc',
+    protected $fillable = ['rut', 'name', 'apellidos', 'email', 'usuario_status_id', 'codigo_cupon', 'plan_id', 'password', 'tc'];
 
-    ];
-
-    protected $table = "users";
+    protected $table = 'users';
 
     public function getFirstNameAttribute()
     {
         return explode(' ', $this->name)[0];
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
+    protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
     /**
      * The attributes that should be cast.
@@ -92,10 +58,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
+    protected $appends = ['profile_photo_url'];
 
     public function scopeBuscar($query, $buscar)
     {
@@ -113,19 +76,6 @@ class User extends Authenticatable
         return $query->where('usuario_status_id', 'like', '%' . $estado . '%');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     //relaciones
     public function ticket()
     {
@@ -142,11 +92,15 @@ class User extends Authenticatable
         return null !== $this->roles()->whereIn('name', $roles)->first();
     }
 
-
     public function hasRole($role)
-{
-    return $this->roles()->where('name', $role)->exists();
-}
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
 
+    // En tu modelo User
+public function estadoUsuario()
+{
+    return $this->belongsTo(UsuarioStatu::class, 'usuario_status_id');
+}
 
 }
