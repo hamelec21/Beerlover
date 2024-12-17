@@ -12,7 +12,15 @@
                     <div class="w-full">
                         {{-- seccion de busqueda --}}
                         <div class="flex justify-around bg-gray-200 items-center  py-3">
-                            <div class=" text-left text-gray-900 font-bold py-1 text-sm ">
+
+                            <!--boton de crear-->
+                            <div>
+                                <a href="{{ route('crear-cupon') }}">
+                                    <button class="btn-agregar ">Crear Nueva Cupon</button>
+                                </a>
+                            </div>
+
+                            <div class="text-left text-gray-900 font-bold py-1 text-sm w-1/2">
                                 <input wire:model.live="search" type="text" name="titulo" id=""
                                     placeholder="Busqueda"
                                     class=" rounded-lg border-transparent flex-1 appearance-none border border-blue-600 w-full py-1 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
@@ -20,11 +28,12 @@
                                     <span class="error text-red-600 text-xs">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <!--boton de crear-->
+
+
                             <div>
-                                <a href="{{ route('crear-cupon') }}">
-                                    <button class="btn-agregar ">Crear Nueva Cupon</button>
-                                </a>
+                                <div class="flex justify-center items-center">
+                                    <button  wire:click="exportCampanaToExcel" class="self-center  bg-gray-800 text-white px-4 py-1.5 rounded">Exportar a Excel</button>
+                                </div>
                             </div>
 
                         </div>
@@ -46,6 +55,7 @@
                                 <th class="py-3 px-6 text-left">ID</th>
                                 <th class="py-3 px-6 text-left">Codigo</th>
                                 <th class="py-3 px-6 text-left">Nombre Cupon</th>
+                                <th class="py-3 px-6 text-center">Cupones Usados</th>
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -71,6 +81,13 @@
                                             <span>{{ $cupon->nombre }}</span>
                                         </div>
                                     </td>
+
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase justify-center ">
+                                            <span class="bg-sky-200 px-4 rounded-lg py-1 text-sky-600">{{ $cupon->users_count }}</span>
+                                        </div>
+                                    </td>
+
 
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex item-center justify-center">

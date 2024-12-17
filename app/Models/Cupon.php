@@ -12,6 +12,13 @@ class Cupon extends Model
     protected $fillable=['nombre','codigo'];
 
 
+    //Relación
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'codigo_cupon', 'codigo');
+    }
+
     public function scopeBuscar($query, $buscar)
     {
         if ($buscar === '') {
@@ -19,5 +26,7 @@ class Cupon extends Model
         }
         return $query->where('nombre', 'like', '%' . $buscar . '%');
     }
+
+
 
 }

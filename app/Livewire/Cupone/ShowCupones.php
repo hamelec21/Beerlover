@@ -5,6 +5,8 @@ namespace App\Livewire\Cupone;
 use App\Models\Cupon;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\CuponesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ShowCupones extends Component
@@ -26,24 +28,19 @@ class ShowCupones extends Component
     }
 
 
-
-
-
-    
-    public function render()
+    public function exportCampanaToExcel()
     {
-        $cupones= Cupon::buscar($this->search)
-        ->orderBy('id','ASC')
-        ->paginate(10);
-        return view('livewire.cupone.show-cupones',compact('cupones'));
+        return Excel::download(new CuponesExport, 'cupones.xlsx');
     }
 
 
-
-
-
-
-
-
+    public function render()
+    {
+        $cupones = Cupon::withCount('users')
+        ->buscar($this->search)
+        ->orderBy('id', 'ASC')
+        ->paginate(10);
+        return view('livewire.cupone.show-cupones',compact('cupones'));
+    }
 
 }
