@@ -25,6 +25,10 @@ class ShowCupones extends Component
       Cupon::destroy($id);
     }
 
+
+
+
+
     
     public function render()
     {

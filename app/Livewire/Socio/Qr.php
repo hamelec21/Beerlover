@@ -30,8 +30,6 @@ class Qr extends Component
 
 
 
-
-
         if ($this->comercio) {
             $blockedUser = BlockedUser::where('user_id', $this->user_id)
                 ->where('locales_id', $this->comercio->id)
@@ -45,9 +43,13 @@ class Qr extends Component
                     ->first()
                     ->blocked_until;
 
-                $timeRemaining = now()->diffInMinutes($blockedUntil);
+              //  $timeRemaining = now()->diffInMinutes($blockedUntil);
 
-                $errorMessage = '¡Su Proximo Ticket Esta Disponible En! ' . $timeRemaining . ' minutos. ¡Gracias!.';
+              // Calcular la diferencia en horas y minutos
+            $hoursRemaining = now()->diffInHours($blockedUntil);
+            $minutesRemaining = now()->diffInMinutes($blockedUntil) % 60; // Obtener solo los minutos restantes
+
+            $errorMessage = "¡Tu próximo ticket en este local estará disponible en {$hoursRemaining} horas y {$minutesRemaining} minutos! ¡Gracias!";
 
                 return redirect()->route('mesero.home')->with('error', $errorMessage);
             }

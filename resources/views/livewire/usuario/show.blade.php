@@ -31,7 +31,7 @@
                             <div class="text-left text-lg text-[#1d537c]">Nombre:<span
                                     class="px-2">{{ $this->datosocio->name }}</span></div>
                             <div class="text-left text-lg text-[#1d537c]">Apellidos:<span
-                                    class="px-2">{{ $this->datosocio->papellido }}
+                                    class="px-2">{{ $this->datosocio->apellidos }}
                                     {{ $this->datosocio->sapellido }}</span></div>
                                     <div class="text-left text-lg text-[#1d537c]">Email:<span
                                         class="px-2">{{ $this->datosocio->email}}</span></div>
