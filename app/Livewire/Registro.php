@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NuevoUsuarioRegistrado;
+use App\Rules\ChileanPhone;
 
 class Registro extends Component
 {
@@ -17,6 +18,7 @@ class Registro extends Component
     public $name;
     public $apellidos;
     public $email;
+    public $telefono;
     public $password;
     public $passwordConfirmation;
     public $isValid = false;
@@ -24,6 +26,11 @@ class Registro extends Component
     public $tieneCupon = 'no';
     public $esMayorEdad = null;  // Estado del radio button
     public $acepto='false';
+
+
+
+
+
 
 
 
@@ -70,6 +77,7 @@ class Registro extends Component
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|same:passwordConfirmation',
             'acepto'=>'required',
+            'telefono' => ['required', new ChileanPhone], // Agrega esta línea
 
         ]);
 
@@ -96,6 +104,7 @@ class Registro extends Component
             'name' => $this->name,
             'apellidos' => $this->apellidos,
             'email' => $this->email,
+            'phone'=>$this->telefono,
             'usuario_status_id' => 1,
             'plan_id' => 1, // Ajustar el plan según el cupón si es necesario
             'codigo_cupon' => $this->codigo_cupon,

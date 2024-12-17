@@ -33,6 +33,11 @@
                 <x-input type="email" class="block mt-5 w-full rounded-xl" wire:model="email"
                     placeholder="Ingrese su Correo" />
                 <x-input-error for="email" />
+
+                <x-input id="phone-input" type="tel" class="block mt-5 w-full rounded-xl" wire:model="telefono" placeholder="Ingrese su Telefono" />
+                <x-input-error for="telefono" />
+
+
                 <x-input type="password" class="block mt-5 w-full rounded-xl" wire:model="password"
                     placeholder="Ingrese contraseña" />
                 <x-input-error for="password" />
@@ -95,6 +100,22 @@
             rut = rut.replace(/^(\d{1,2})(\d{0,3})(\d{0,3})(\d{0,1})/, '$1.$2.$3-$4');
         }
         e.target.value = rut;
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1/dist/cleave.min.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Cleave('#phone-input', {
+            delimiters: [' '],
+            blocks: [9],
+            numericOnly: true,
+            phone: true,
+            phoneRegionCode: 'CL'
+        });
     });
 </script>
 

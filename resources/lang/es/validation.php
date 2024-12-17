@@ -130,8 +130,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'phone' => [
+            'required' => 'El campo teléfono es obligatorio.',
+            'chilean_phone' => 'El teléfono debe ser un número válido de 9 dígitos.'
         ],
     ],
 
