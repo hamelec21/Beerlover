@@ -114,7 +114,7 @@ class Registro extends Component
 
         $user->roles()->sync('2');
 
-        Mail::to('hello@example.com')->send(new NuevoUsuarioRegistrado($user));
+        Mail::to('no-responder@beerlover.cl')->send(new NuevoUsuarioRegistrado($user));
 
         return redirect('mensaje');
 
