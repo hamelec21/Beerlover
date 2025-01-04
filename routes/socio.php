@@ -14,5 +14,8 @@ Route::middleware(['auth:sanctum', 'verified', 'role:socio'])->group(function ()
 
 Route::get('/socio/home', \App\Livewire\Socio\Home::class)->name('socio.home');
 
+Route::get('/socio/terminos-y-condiciones', \App\Livewire\Socio\TerminosYCondiciones::class)->name('socio.terminos-y-condiciones');
+Route::get('/socio/nosotros', \App\Livewire\Socio\Nosotros::class)->name('socio.nosotros');
+
 
 Route::get('/busquedas/buscarhomemenusocio', App\Livewire\Busquedas\buscarhomemenu::class)->name('buscarhomemenusocio');

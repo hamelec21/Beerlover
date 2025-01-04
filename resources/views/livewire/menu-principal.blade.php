@@ -8,6 +8,7 @@
             </a>
         </div>
         <!--boton cerrar session-->
+
         <div class="flex justify-end lg:mt-8 space-x-4">
             <a href="/registro">
                 <button class="bg-gray-900 rounded-xl px-4 py-1 w-25">
@@ -21,6 +22,8 @@
                 </button>
             </a>
         </div>
+
+
     </div>
 
     <div class="w-full lg:w-1/2 mx-auto">

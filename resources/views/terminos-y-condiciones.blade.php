@@ -24,12 +24,13 @@
         </div>
     </div>
 
-    <div class="px-4">
+    <div class="px-4 mb-10">
         <div class="container mx-auto mt-10">
             <p class="text-justify text-lg">
-               <b> Fecha última actualización: 31 de Enero de 2024
-                Los Términos y Condiciones constituyen su acuerdo con Beer Lover.
-                Al utilizar la plataforma de Beer Lover, el Suscriptor declara su conformidad con los siguientes puntos.</b>
+                <b> Fecha última actualización: 31 de Enero de 2024
+                    Los Términos y Condiciones constituyen su acuerdo con Beer Lover.
+                    Al utilizar la plataforma de Beer Lover, el Suscriptor declara su conformidad con los siguientes
+                    puntos.</b>
             </p>
             <p class="text-justify text-lg mt-5 mb-5">
                 La Plataforma Beer Lover en todas sus modalidades podrá ser usada por cualquier persona que cumpla con
@@ -49,10 +50,6 @@
                 del Suscriptor.
             </p>
 
-            <p class="text-justify text-lg mt-5 mb-5">
-                Si un Suscriptor desea solicitar que sus datos sean eliminados de la base de datos, debe hacerlo por
-                escrito a soporte@beerlover.cl
-            </p>
             <p class="text-justify text-lg mt-5 mb-5">
                 Todos los datos e información entregada por el Suscriptor deben ser verdaderos y fidedignos.
             </p>
@@ -76,7 +73,7 @@
             <p class="text-justify text-lg mt-5 mb-5">
                 El Suscriptor tiene derecho a canjear una cerveza por cuenta o boleta de consumo, si su total sobrepasa
                 el monto mínimo determinado por el Local Adherido y una vez que el servicio sea efectuado, el sistema
-                bloqueará la posibilidad de un nuevo canje durante los siguientes 150 minutos. Para esto, el sistema
+                bloqueará la posibilidad de un nuevo canje durante 12 horas. Para esto, el sistema
                 entrega un código QR al Suscriptor que valida ante el Local Adherido su membrecía. El personal del Local
                 Adherido podrá pedir que el Suscriptor muestre su carnet de identidad si lo estima necesario y el código
                 quedará aceptado e inutilizado. El mal uso o uso fraudulento de la Plataforma queda registrado con una
@@ -120,8 +117,54 @@
             </p>
 
             <p class="text-justify text-lg mt-5 mb-5">
-                Los Suscriptores pueden eliminar su cuenta en cualquier momento. Para ello, deberán enviar su solicitud de eliminación de cuenta por correo electrónico a: soporte@beerlover.cl
+                <b> Los Suscriptores pueden eliminar su cuenta en cualquier momento.</b> Para ello, deberán enviar su
+                solicitud de eliminación de cuenta por correo electrónico a: soporte@beerlover.cl
+                Al eliminar tu cuenta, todos tus datos personales, preferencias y contenidos asociados se eliminarán de
+                manera irreversible. Una vez que tu cuenta haya sido eliminada, no podrás recuperarla ni acceder a los
+                servicios asociados a ella. Ten en cuenta que algunos datos podrían conservarse durante un período de
+                tiempo por motivos legales o para cumplir con nuestras políticas de conservación de datos.
             </p>
+
+            <p class="text-justify text-lg mt-5 mb-5">
+                <b> Compensación</b>
+                El usuario acepta que, conforme a la ley, el desarrollador no será responsable de ninguna reclamación,
+                pérdida, daño, costo o gasto de cualquier tipo, ya sea directo, indirecto o incidental, que surja del
+                uso de la aplicación, de la incapacidad para utilizarla o del mal uso de ésta. El usuario acepta
+                indemnizar y mantener indemne al desarrollador, sus afiliados, empleados y agentes de cualquier
+                reclamación, demanda, responsabilidad, daños, pérdidas y gastos (incluidos los honorarios de abogados)
+                que surjan de su uso de la aplicación o de cualquier incumplimiento de estos términos.
+            </p>
+
+            <p class="text-justify text-lg mt-5 mb-5">
+                <b>Pagos del Servicio</b>
+                El usuario acepta que todos los pagos realizados para los servicios proporcionados a través de la
+                aplicación son finales y no reembolsables, a menos que se indique lo contrario. El usuario se compromete
+                a pagar todas las tarifas y cargos aplicables en el momento de la compra y entiende que será responsable
+                de pagar cualquier impuesto o cargo adicional que pueda aplicar.<br>
+                En caso de que el usuario incumpla con los pagos debidos, el desarrollador se reserva el derecho de
+                suspender o cancelar el acceso a la aplicación y a los servicios hasta que se realice el pago completo.
+                El usuario acepta indemnizar y mantener indemne al desarrollador de cualquier reclamación, demanda o
+                gasto que surja como resultado de su incumplimiento en el pago.
+
+            </p>
+
+            <p class="text-justify text-lg mt-5 mb-5">
+                <b>Almacenamiento de datos personales</b>
+                Nuestra aplicación recopila y almacena información personal, como el nombre, RUT, correo electrónico y
+                preferencias del usuario, con el fin de mejorar la experiencia. Los datos se almacenan de forma segura
+                en servidores dedicados y se mantienen durante el tiempo en que el usuario esté suscrito a la
+                aplicación. Los usuarios pueden solicitar la eliminación de sus datos en cualquier momento poniéndose en
+                contacto con nosotros directamente. Cumplimos con las leyes de protección de datos y nos comprometemos a
+                proteger la privacidad de nuestros usuarios.
+            </p>
+
+
+<br><br>
+
+
+
+
+
 
         </div>
     </div>

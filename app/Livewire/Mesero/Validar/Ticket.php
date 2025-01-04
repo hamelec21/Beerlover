@@ -26,7 +26,6 @@ class Ticket extends Component
        // dd($user_id,$id);
         $this->loc = Local::where('id', $id)->first();
 
-
         //consulta users
         //$this->socio = User::where('id', $user_id)->first();
 
@@ -59,7 +58,7 @@ class Ticket extends Component
 
             $errorMessage = '¡Su Proximo Ticket Esta Disponible En!' . $timeRemaining . ' minutos. ¡Gracias!.';
 
-            return redirect()->route('mesero.home')->with('error', $errorMessage);
+            return redirect()->route('comercio-asociados')->with('error', $errorMessage); //mesero.home
         }
         // Generar un código aleatorio para el ticket
         $codigo_ticket = Str::random(10);
@@ -88,8 +87,16 @@ class Ticket extends Component
         // Redirigir a la página de inicio del mesero
         $this->dispatch('render');
         $this->dispatch('insert');
-        return redirect()->route('socio.home'); //mesero.home
+        return redirect()->route('comercio-asociados'); //mesero.home
     }
+
+
+
+
+
+
+
+
 
     private function bloquearUsuarioEnLocal($user_id, $loc_id)
     {
@@ -135,7 +142,7 @@ class Ticket extends Component
         //  $this->reset(['codigo_ticket','ticket_status_id','users_id','locales_id']);
         $this->dispatch('render');
         $this->dispatch('bloqueado');
-        return redirect()->route('socio.home');
+        return redirect()->route('comercio-asociados');
     }
 
 

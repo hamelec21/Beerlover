@@ -9,9 +9,13 @@
             </div>
             <!--bienvenidos-->
             <div class="flex justify-center items-center lg:mt-8">
+                @auth
                 <span class="text-white text-lg">
                     Salud {{ Auth::user()->first_name }}
                 </span>
+            @endauth
+            @guest
+            @endguest
             </div>
             <!--boton cerrar session-->
             <div class="flex justify-end lg:mt-8">

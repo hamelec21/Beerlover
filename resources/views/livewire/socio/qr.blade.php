@@ -34,10 +34,8 @@
 
         </div>
 
-        @livewire('footer')
-
     </div>
-
+    @livewire('socio.footer')
     <script>
         var timeLeft = 10; // Tiempo en segundos
         var countdownElement = document.getElementById('time');

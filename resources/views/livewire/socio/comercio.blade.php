@@ -120,5 +120,5 @@
 
     </div>
 
-    @livewire('footer')
+    @livewire('socio.footer')
 </div>

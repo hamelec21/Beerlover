@@ -1,5 +1,5 @@
 <div>
-    <div class="px-4 mt-20">
+    <div class="px-4 mt-3 lg:mt-10">
         <div class="container mx-auto w-full lg:w-1/2 px-4 bg-gray-200 border border-gray-300 rounded-lg">
             @if (session('error'))
                 <div class="alert alert-danger">
@@ -11,12 +11,12 @@
                 </div>
             @endif
 
-            <div class="p-4">
+            <div class="p-2">
                 <h1 class="text-center text-gray-800 font-bold text-lg">Registro</h1>
             </div>
             <form wire:submit.prevent="registro">
                 <div>
-                    <x-input type="text" wire:model="rut" class="block mt-5 w-full rounded-xl" id="rutInput"
+                    <x-input type="text" wire:model="rut" class="block mt-3 w-full rounded-xl" id="rutInput"
                         placeholder="Ingrese el RUT sin puntos ni guion" />
                     @if ($rut && $isValid === true)
                         <span style="color: green;">Válido</span>
@@ -24,24 +24,24 @@
                         <span style="color: red;">Inválido</span>
                     @endif
                 </div>
-                <x-input type="text" class="block mt-5 w-full rounded-xl" wire:model="name"
+                <x-input type="text" class="block mt-3 w-full rounded-xl" wire:model="name"
                     placeholder="Ingrese Nombre" />
                 <x-input-error for="name" />
-                <x-input type="text" class="block mt-5 w-full rounded-xl" wire:model="apellidos"
+                <x-input type="text" class="block mt-3 w-full rounded-xl" wire:model="apellidos"
                     placeholder="Ingrese Apellidos" />
                 <x-input-error for="apellidos" />
-                <x-input type="email" class="block mt-5 w-full rounded-xl" wire:model="email"
+                <x-input type="email" class="block mt-3 w-full rounded-xl" wire:model="email"
                     placeholder="Ingrese su Correo" />
                 <x-input-error for="email" />
 
-                <x-input id="phone-input" type="tel" class="block mt-5 w-full rounded-xl" wire:model="telefono" placeholder="Ingrese su Telefono" />
+                <x-input id="phone-input" type="tel" class="block mt-3 w-full rounded-xl" wire:model="telefono" placeholder="Ingrese su Telefono" />
                 <x-input-error for="telefono" />
 
 
-                <x-input type="password" class="block mt-5 w-full rounded-xl" wire:model="password"
+                <x-input type="password" class="block mt-3 w-full rounded-xl" wire:model="password"
                     placeholder="Ingrese contraseña" />
                 <x-input-error for="password" />
-                <x-input type="password" class="block mt-5 w-full rounded-xl" wire:model="passwordConfirmation"
+                <x-input type="password" class="block mt-3 w-full rounded-xl" wire:model="passwordConfirmation"
                     placeholder="Confirme su Contraseña" />
                 <x-input-error for="passwordConfirmation" />
                 <div>
@@ -71,7 +71,7 @@
                 <div>
                     <div class="flex justify-center space-x-4 mt-2 mb-10">
                         <input type="checkbox" id="acepto" wire:model.live="acepto" value="si" class="form-checkbox">
-                        <label for="acepto">Sí, <a href="#"class="underline">acepto los términos y condiciones</a></label>
+                        <label for="acepto">Sí, <a href="/terminos-y-condiciones"class="underline">acepto los términos y condiciones</a></label>
                     </div>
                 </div>
 
