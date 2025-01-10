@@ -107,7 +107,7 @@
 
         </div>
 
-        <div class="flex flex-wrap justify-around item-center px-2 p-2 bg-gray-100">
+        <div class="flex flex-wrap justify-around item-center px-2 p-2 bg-gray-100 mb-10">
             <div class="flex flex-col w-1/2 text-[14px]">Dirección</div>
             <div class="flex flex-col w-1/2 text-[14px]">{{ $this->locales->direccion }}</div>
             <div class="flex flex-col w-1/2 text-[14px]">Comuna</div>

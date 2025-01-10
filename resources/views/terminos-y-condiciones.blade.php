@@ -27,7 +27,7 @@
     <div class="px-4 mb-10">
         <div class="container mx-auto mt-10">
             <p class="text-justify text-lg">
-                <b> Fecha última actualización: 31 de Enero de 2024
+                <b> Fecha última actualización: 1 de Enero de 2025
                     Los Términos y Condiciones constituyen su acuerdo con Beer Lover.
                     Al utilizar la plataforma de Beer Lover, el Suscriptor declara su conformidad con los siguientes
                     puntos.</b>
