@@ -1,6 +1,6 @@
 <div>
     @livewire('menu-segundario')
-    <div class="container mx-auto px-4 mt-3">
+    <div class="container mx-auto px-4 mt-3 h-screen overflow-y-auto mb-10 lg:mb-5">
         <div class="flex justify-start">
             <a href="{{ route('comercio-asociados') }}">
                 <div class="w-10 h-10 flex justify-center items-center">
@@ -9,8 +9,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                     </svg>
                 </div>
-
-
             </a>
         </div>
         <div class="flex items-center mt-3 mb-3">
@@ -118,6 +116,6 @@
         </div>
 
     </div>
-@livewire('footer')
+    @livewire('footer')
 
 </div>

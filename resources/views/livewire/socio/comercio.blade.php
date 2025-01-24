@@ -1,6 +1,6 @@
 <div>
     @livewire('menu-segundario')
-    <div class="container mx-auto px-4 mt-3">
+    <div class="container mx-auto px-4 mt-3 h-screen overflow-y-auto mb-10 lg:mb-5">
         <div class="flex justify-start">
             <a href="{{ route('socio.home') }}">
             <div class="w-10 h-10 flex justify-center items-center">
