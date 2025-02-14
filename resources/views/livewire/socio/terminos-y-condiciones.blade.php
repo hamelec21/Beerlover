@@ -120,14 +120,20 @@
 
                 <p class="text-justify text-lg mt-5 mb-5">
                     <b>Pagos del Servicio</b>
-                    El usuario acepta que todos los pagos realizados para los servicios proporcionados a través de la
-                    aplicación son finales y no reembolsables, a menos que se indique lo contrario. El usuario se compromete
-                    a pagar todas las tarifas y cargos aplicables en el momento de la compra y entiende que será responsable
-                    de pagar cualquier impuesto o cargo adicional que pueda aplicar.<br>
-                    En caso de que el usuario incumpla con los pagos debidos, el desarrollador se reserva el derecho de
-                    suspender o cancelar el acceso a la aplicación y a los servicios hasta que se realice el pago completo.
-                    El usuario acepta indemnizar y mantener indemne al desarrollador de cualquier reclamación, demanda o
-                    gasto que surja como resultado de su incumplimiento en el pago.
+                    <p class="text-justify text-lg mt-5 mb-5">
+                        <b>Pagos del Servicio</b>
+                        El usuario acepta que todos los pagos realizados para los servicios proporcionados a través de la
+                        aplicación son finales y no reembolsables, a menos que se indique lo contrario. El usuario se compromete
+                        a pagar todas las tarifas y cargos aplicables en el momento de la compra, incluido el valor de la
+                        suscripción mensual de $5.990, y entiende que será responsable de pagar cualquier impuesto o cargo
+                        adicional que pueda aplicar.
+                        <br>
+                        En caso de que el usuario incumpla con los pagos debidos, Beerlover se reserva el derecho de suspender o
+                        cancelar el acceso a la aplicación y a los servicios hasta que se realice el pago completo. El usuario
+                        acepta indemnizar y mantener indemne a Beerlover de cualquier reclamación, demanda o gasto que surja
+                        como resultado de su incumplimiento en el pago.
+
+                    </p>.
 
                 </p>
 

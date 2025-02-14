@@ -4,13 +4,12 @@ namespace App\Livewire;
 use App\Models\Cupon;
 use Livewire\Component;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\NuevoUsuarioRegistrado;
+//use App\Rules\ValidRut;
 use App\Rules\ChileanPhone;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
+use App\Mail\NuevoUsuarioRegistrado;
 
 class Registro extends Component
 {
@@ -24,66 +23,81 @@ class Registro extends Component
     public $isValid = false;
     public $codigo_cupon = 'invitado';
     public $tieneCupon = 'no';
-    public $esMayorEdad = null;  // Estado del radio button
-    public $acepto='false';
-
-
-
-
-
-
-
+    public $acepto = 'false';
 
     public function updatedAcepto($value)
     {
         $this->acepto = $value ? 'si' : '';
     }
+
     public function actualizarCodigoCupon($valor)
     {
-        // Actualiza el valor del código del cupón dependiendo de la opción seleccionada
         $this->codigo_cupon = ($valor === 'si') ? '' : 'invitado';
     }
 
 
+
+
     public function updatedRut()
     {
+        $this->rut = strtoupper($this->rut); // Convertir a mayúsculas
         $this->isValid = $this->rut ? $this->validarRut($this->rut) : null;
+
+        // Mensaje de error en tiempo real si el RUT no es válido
+        if ($this->isValid === false) {
+            $this->addError('rut', 'El RUT ingresado no es válido.');
+        } else {
+            $this->resetErrorBag('rut'); // Limpiar el error si el RUT es válido
+        }
     }
+
 
     public function validarRut($rut)
     {
-        $rut = preg_replace('/[^k0-9]/i', '', $rut);
-        $dv = substr($rut, -1);
-        $numero = substr($rut, 0, strlen($rut) - 1);
-        $i = 2;
-        $suma = 0;
-        foreach (array_reverse(str_split($numero)) as $v) {
-            if ($i == 8) $i = 2;
-            $suma += $v * $i;
-            ++$i;
+        // Remover puntos y espacios, pero mantener el guion
+        $rut = str_replace('.', '', $rut);
+
+        if (!preg_match('/^(\d{7,9})-([\dkK])$/', $rut, $matches)) {
+            return false;
         }
-        $dvr = 11 - ($suma % 11);
-        if ($dvr == 11) $dvr = 0;
-        if ($dvr == 10) $dvr = 'K';
-        return $dvr == strtoupper($dv);
+
+        $numero = $matches[1];
+        $dvIngresado = strtoupper($matches[2]);
+
+        $suma = 0;
+        $factor = 2;
+
+        for ($i = strlen($numero) - 1; $i >= 0; $i--) {
+            $suma += $numero[$i] * $factor;
+            $factor = $factor == 7 ? 2 : $factor + 1;
+        }
+
+        $dvrCalculado = 11 - ($suma % 11);
+        if ($dvrCalculado == 11) {
+            $dvrCalculado = '0';
+        } elseif ($dvrCalculado == 10) {
+            $dvrCalculado = 'K';
+        } else {
+            $dvrCalculado = (string) $dvrCalculado;
+        }
+
+        return $dvrCalculado === $dvIngresado;
     }
 
     public function registro()
     {
         $this->validate([
-            'rut' => 'required',
+            'rut' => ['required', 'string', 'max:12', new ValidRut, 'unique:users,rut'],
             'name' => 'required',
             'apellidos' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|same:passwordConfirmation',
-            'acepto'=>'required',
-            'telefono' => ['required', new ChileanPhone], // Agrega esta línea
-
+            'acepto' => 'required',
+            'telefono' => ['required', new ChileanPhone],
         ]);
 
         if (!$this->validarRut($this->rut)) {
-            session()->flash('error', 'El RUT ingresado no es válido.');
-            return;
+            throw ValidationException::withMessages(['rut' => 'El RUT ingresado no es válido.']);
         }
 
         if ($this->tieneCupon == 'si') {
@@ -91,41 +105,34 @@ class Registro extends Component
                 'codigo_cupon' => 'required',
             ]);
 
-            $cupon = Cupon::where('codigo', $this->codigo_cupon)->first();
-
-            if (!$cupon) {
-                session()->flash('error', 'El código del cupón no es válido.');
-                return;
+            if (!Cupon::where('codigo', $this->codigo_cupon)->exists()) {
+                throw ValidationException::withMessages(['codigo_cupon' => 'El código del cupón no es válido.']);
             }
         }
 
+        // Crear usuario
         $user = User::create([
-            'rut' => $this->rut,
+            'rut' => str_replace('.', '', strtoupper($this->rut)),
             'name' => $this->name,
             'apellidos' => $this->apellidos,
             'email' => $this->email,
-            'phone'=>$this->telefono,
+            'phone' => $this->telefono,
             'usuario_status_id' => 1,
-            'plan_id' => 1, // Ajustar el plan según el cupón si es necesario
+            'plan_id' => 1,
             'codigo_cupon' => $this->codigo_cupon,
             'password' => Hash::make($this->password),
-            'tc'=> $this->acepto,
+            'tc' => $this->acepto,
         ]);
 
-        $user->roles()->sync('2');
+        $user->roles()->sync([2]);
 
         Mail::to('no-responder@beerlover.cl')->send(new NuevoUsuarioRegistrado($user));
-
-        return redirect('mensaje');
 
         return redirect()->route('socio.home');
     }
 
     public function render()
     {
-
         return view('livewire.registro');
     }
 }
-
-

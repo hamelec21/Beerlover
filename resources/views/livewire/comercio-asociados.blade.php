@@ -7,10 +7,12 @@
         <div class="container mx-auto mt-4 mb-3 py-2 rounded-md text-gray-900 flex flex-col items-center text-center px-4">
             <h1 class="text-2xl font-bold">¡¡Hola Beerlover!!</h1>
             <p class="text-justify text-lg mt-2">
-                Si eres socio de nuestra comunidad, puedes canjear una cerveza en los locales asociados.
+                ¡Únete a nuestra comunidad y disfruta de una cerveza gratis en locales asociados cada mes!
                 <br>
-                Sólo debes elegir un local, cumplir con el consumo mínimo y generar el QR para canjear tu cerveza.
-                <a href="/terminos-y-condiciones" class="underline">(Más detalles en los T&amp;C)</a>
+                Solo elige tu local favorito, cumple con el consumo mínimo y genera tu QR para canjearla al instante.
+                <a href="/terminos-y-condiciones" class="underline">(Consulta los T&amp;C aquí)</a>
+                <br>
+                Hazte socio hoy mismo por solo <b>$5.990</b> mensuales. <a href="{{ route('registro') }}"><b>Regístrate ahora</b></a> y recibe el link para autorizar tu pago. ¡Empieza a disfrutar!
             </p>
         </div>
 
