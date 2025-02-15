@@ -9,7 +9,7 @@ class Plan extends Model
 {
     use HasFactory;
     protected $table = 'planes';
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','descripcion','img','valor','is_active'];
 
     public function scopeBuscar($query, $buscar)
     {
