@@ -43,9 +43,11 @@
                 <x-input type="text" class="block mt-3 w-full rounded-xl" wire:model="name"
                     placeholder="Ingrese Nombre" />
                 <x-input-error for="name" />
+                
                 <x-input type="text" class="block mt-3 w-full rounded-xl" wire:model="apellidos"
                     placeholder="Ingrese Apellidos" />
                 <x-input-error for="apellidos" />
+
                 <x-input type="email" class="block mt-3 w-full rounded-xl" wire:model="email"
                     placeholder="Ingrese su Correo" />
                 <x-input-error for="email" />

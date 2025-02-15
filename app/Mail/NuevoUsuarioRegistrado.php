@@ -23,6 +23,25 @@ class NuevoUsuarioRegistrado extends Mailable
     public function __construct(User $user)
     {
         $this->user = $user;
+
+        // Formatear el RUT
+        $this->user->rut = $this->formatRut($this->user->rut);
+    }
+
+    /**
+     * Función para formatear el RUT.
+     */
+    private function formatRut($rut)
+    {
+        // Elimina todo lo que no sea número o K
+        $rut = preg_replace('/[^0-9kK]/', '', $rut);
+        $dv = substr($rut, -1); // Dígito verificador
+        $cuerpo = substr($rut, 0, -1); // Cuerpo del RUT
+
+        // Aplica puntos cada tres dígitos
+        $cuerpo = number_format($cuerpo, 0, '', '.');
+
+        return "{$cuerpo}-{$dv}";
     }
 
     /**

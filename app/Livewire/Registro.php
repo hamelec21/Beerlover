@@ -4,7 +4,7 @@ namespace App\Livewire;
 use App\Models\Cupon;
 use Livewire\Component;
 use App\Models\User;
-//use App\Rules\ValidRut;
+use App\Rules\ValidRut;
 use App\Rules\ChileanPhone;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;

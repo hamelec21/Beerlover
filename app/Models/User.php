@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $fillable = ['rut', 'name', 'apellidos', 'email', 'usuario_status_id', 'codigo_cupon', 'plan_id', 'password', 'tc' ,'phone'];
+    protected $fillable = ['rut', 'name', 'apellidos', 'email', 'usuario_status_id', 'codigo_cupon', 'plan_id', 'password', 'tc', 'phone'];
 
     protected $table = 'users';
 
@@ -98,9 +98,15 @@ class User extends Authenticatable
     }
 
     // En tu modelo User
-public function estadoUsuario()
-{
-    return $this->belongsTo(UsuarioStatu::class, 'usuario_status_id');
-}
+    public function estadoUsuario()
+    {
+        return $this->belongsTo(UsuarioStatu::class, 'usuario_status_id');
+    }
 
+    //Relacion plan
+
+    public function plan()
+{
+    return $this->belongsTo(Plan::class);
+}
 }
