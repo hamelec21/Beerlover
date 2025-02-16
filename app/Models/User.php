@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $fillable = ['rut', 'name', 'apellidos', 'email', 'usuario_status_id', 'codigo_cupon', 'plan_id', 'password', 'tc', 'phone'];
+    protected $fillable = ['rut', 'name', 'apellidos', 'email', 'usuario_status_id', 'codigo_cupon', 'tipo_plan_id', 'password', 'tc', 'phone'];
 
     protected $table = 'users';
 
@@ -106,7 +106,7 @@ class User extends Authenticatable
     //Relacion plan
 
     public function plan()
-{
-    return $this->belongsTo(Plan::class);
-}
+    {
+        return $this->belongsTo(Plan::class, 'tipo_plan_id');
+    }
 }

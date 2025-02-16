@@ -23,8 +23,15 @@ class ShowTickets extends Component
     public function mount()
     {
         $query = Ticket::first();
-        $this->local = Local::where('id', $query->locales_id)->first();
+
+        if ($query && $query->locales_id) {
+            $this->local = Local::where('id', $query->locales_id)->first();
+        } else {
+            // Manejar el caso cuando no se encuentra ningún ticket o no tiene un locales_id
+            $this->local = null;  // O cualquier otro valor predeterminado que desees
+        }
     }
+
 
     public function exportToExcel()
     {

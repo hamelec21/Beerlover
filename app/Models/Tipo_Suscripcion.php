@@ -27,4 +27,6 @@ class Tipo_Suscripcion extends Model
         return $this->hasMany(Suscripcion::class, 'id');
     }
 
+    
+
 }

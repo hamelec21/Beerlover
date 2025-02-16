@@ -9,7 +9,7 @@ class Plan extends Model
 {
     use HasFactory;
     protected $table = 'planes';
-    protected $fillable = ['nombre','descripcion','img','valor','is_active'];
+    protected $fillable = ['nombre','descripcion','imagen','valor','is_active','tipo_plan_id'];
 
     public function scopeBuscar($query, $buscar)
     {
@@ -21,8 +21,13 @@ class Plan extends Model
 
     //relaciones
 
+
+/*
     public function suscripcion()
     {
         return $this->hasMany(Suscripcion::class, 'id');
     }
+*/
+
+
 }

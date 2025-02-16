@@ -33,6 +33,7 @@ class UsuariosExport implements FromCollection, WithHeadings, WithMapping
             'Rut',
             'Nombre',
             'Apellidos',
+            'Plan',
             'Correo Electrónico',
             'phone',
             'Rol', // Ahora podemos exportar el rol
@@ -52,13 +53,14 @@ class UsuariosExport implements FromCollection, WithHeadings, WithMapping
     {
         // Aquí obtenemos el rol asignado usando Spatie
         $roles = $user->getRoleNames()->implode(', '); // En caso de que tenga más de un rol
-
+        $planName = $user->plan ? $user->plan->nombre : 'Sin Plan'; // Ajusta 'nombre' al campo real en el modelo Plan
 
         return [
             $user->id,
             $user->rut,
             $user->name,
             $user->apellidos,
+            $planName, // Mostramos el nombre del plan,
             $user->email,
             $user->phone,
             $roles, // Mostramos el rol(s) del usuario

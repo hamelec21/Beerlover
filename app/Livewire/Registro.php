@@ -10,16 +10,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use App\Mail\NuevoUsuarioRegistrado;
+use App\Models\Plan;
 
 class Registro extends Component
 {
-    public $rut;
-    public $name;
-    public $apellidos;
-    public $email;
-    public $telefono;
-    public $password;
-    public $passwordConfirmation;
+    public $name,$apellidos,$rut,$email,$telefono, $password,$passwordConfirmation,$planSeleccionado;
     public $isValid = false;
     public $codigo_cupon = 'invitado';
     public $tieneCupon = 'no';
@@ -34,9 +29,6 @@ class Registro extends Component
     {
         $this->codigo_cupon = ($valor === 'si') ? '' : 'invitado';
     }
-
-
-
 
     public function updatedRut()
     {
@@ -87,6 +79,7 @@ class Registro extends Component
     public function registro()
     {
         $this->validate([
+            'planSeleccionado'=>'required',
             'rut' => ['required', 'string', 'max:12', new ValidRut, 'unique:users,rut'],
             'name' => 'required',
             'apellidos' => 'required',
@@ -112,13 +105,13 @@ class Registro extends Component
 
         // Crear usuario
         $user = User::create([
+            'tipo_plan_id'=>$this->planSeleccionado,
             'rut' => str_replace('.', '', strtoupper($this->rut)),
             'name' => $this->name,
             'apellidos' => $this->apellidos,
             'email' => $this->email,
             'phone' => $this->telefono,
             'usuario_status_id' => 1,
-            'plan_id' => 1,
             'codigo_cupon' => $this->codigo_cupon,
             'password' => Hash::make($this->password),
             'tc' => $this->acepto,
@@ -127,12 +120,14 @@ class Registro extends Component
         $user->roles()->sync([2]);
 
         Mail::to('no-responder@beerlover.cl')->send(new NuevoUsuarioRegistrado($user));
-
         return redirect()->route('socio.home');
+
     }
 
     public function render()
     {
-        return view('livewire.registro');
+        $planes=Plan::where('is_active',1)->get();
+
+        return view('livewire.registro',compact('planes'));
     }
 }

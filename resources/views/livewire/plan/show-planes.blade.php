@@ -3,7 +3,7 @@
     @livewire('menu.sidebar')
     <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%]">
         <div class="container mx-auto bg-gray-800  rounded-lg">
-            <h2 class="flex justify-center mt-5 py-3 font-bold text-white">Módulo de Tipos Suscripciones</h2>
+            <h2 class="flex justify-center mt-5 py-3 font-bold text-white">Módulo Registro de Planes</h2>
         </div>
         <!--busqueda y agregar nuevos registros-->
         <div class="container mx-auto ">
@@ -36,8 +36,6 @@
             </div>
 
         </div>
-
-
         <!--tabla-->
         <div class="container mx-auto">
             <div class="bg-white shadow-md rounded my-6 ">
@@ -45,9 +43,13 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm ">
-
-                                <th class="py-3 px-6 text-left">ID</th>
+                                <th class="py-3px-6 text-center">Imagen</th>
                                 <th class="py-3 px-6 text-left">Nombre Plan</th>
+                                <th class="py-3 px-6 text-left">Descripcion</th>
+                                <th class="py-3 px-6 text-left">Tipo Plan</th>
+                                <th class="py-3 px-6 text-left">Precio</th>
+                                <th class="py-3 px-6 text-left">Estado</th>
+                                <th class="py-3 px-6 text-left">Fecha Creación</th>
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -56,19 +58,62 @@
                             @foreach ($planes as $plan)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
 
-
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase">
-                                            <span>{{ $plan->id }}</span>
+                                            <img src=" {{ Storage::url($plan->imagen) }}" class="w-10">
                                         </div>
                                     </td>
-
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex items-center font-bold uppercase ">
                                             <span>{{ $plan->nombre }}</span>
                                         </div>
                                     </td>
 
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+
+                                            <span>{{ Str::limit(strip_tags( $plan->descripcion),15,'...') }}</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span class="bg-yellow-400 px-2 rounded-lg text-gray-800">{{ $plan->tipo_plan }}</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase ">
+                                            <span>${{ number_format($plan->valor, 0, ',', '.') }}</span>
+
+                                        </div>
+                                    </td>
+
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase">
+                                            <span>
+                                                @if($plan->is_active == 1)
+                                                <span
+                                                class="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2 py-1 text-xs font-semibold text-sky-600 border border-sky-100">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-sky-600"></span>
+                                               Plan Activo
+                                            </span>
+                                                @elseif($plan->is_active == 0)
+                                                <span
+                                                class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-600 border border-red-100">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+                                              Plan Inactivo
+                                            </span>
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <div class="flex items-center font-bold uppercase">
+                                            <span>{{ \Carbon\Carbon::parse($plan->created_at)->format('d/m/Y') }}</span>
+
+                                        </div>
+                                    </td>
                                     <td class="py-1 px-6 text-center">
                                         <div class="flex item-center justify-center">
 

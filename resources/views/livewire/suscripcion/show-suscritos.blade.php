@@ -3,7 +3,7 @@
     @livewire('menu.sidebar')
     <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%]">
         <div class="container mx-auto bg-gray-800  rounded-lg">
-            <h2 class="flex justify-center mt-5 py-3 font-bold text-white">Módulo de Tipos Suscripciones</h2>
+            <h2 class="flex justify-center mt-5 py-3 font-bold text-white">Módulo de Suscripciones</h2>
         </div>
         <!--busqueda y agregar nuevos registros-->
         <div class="container mx-auto ">
@@ -31,9 +31,6 @@
                                     <span class="error text-red-600 text-xs">{{ $message }}</span>
                                 @enderror
                             </div>
-
-
-
                             <div>
                                 <div class="flex justify-center items-center">
                                     <button  wire:click="exportUsuariosToExcel" class="self-center  bg-gray-800 text-white px-4 py-1.5 rounded">Exportar a Excel</button>
@@ -54,57 +51,53 @@
 
         <!--tabla-->
         <div class="container mx-auto">
-            <div class="bg-white shadow-md rounded my-6 ">
+            <div class="bg-white shadow-md rounded my-6">
                 @if ($usuarios->count())
-                    <table class="min-w-max w-full table-auto">
+                    <table class="min-w-full table-auto">
                         <thead>
-                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm ">
-                                <th class="py-3 px-6 text-left">ID</th>
-                                <th class="py-3 px-6 text-left">nombre</th>
-                                <th class="py-3 px-6 text-left">apellidos</th>
-                                <th class="py-3 px-6 text-left">email</th>
-                                <th class="py-3 px-6 text-left">estado</th>
+                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
+                                <th class="py-3 px-6 text-left">Cupon</th>
+                                <th class="py-3 px-6 text-left">Rut</th>
+                                <th class="py-3 px-6 text-left">Nombre</th>
+                                <th class="py-3 px-6 text-left">Apellidos</th>
+                                <th class="py-3 px-6 text-center">Plan</th>
+                                <th class="py-3 px-6 text-left">Tel</th>
+                                <th class="py-3 px-6 text-left">Email</th>
+                                <th class="py-3 px-6 text-left">Estado</th>
                                 <th class="py-3 px-6 text-left">Fecha Registro</th>
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
-
                         <tbody class="text-gray-600 text-sm font-light">
                             @foreach ($usuarios as $usuario)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
-
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase">
-                                            <span>{{ $usuario->id }}</span>
-                                        </div>
+                                        <span class="font-bold uppercase">{{ $usuario->codigo_cupon }}</span>
                                     </td>
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ $usuario->name }}
-                                               </span>
-                                        </div>
+                                        <span class="font-bold uppercase">{{ $usuario->rut }}</span>
+
                                     </td>
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase ">
-                                            <span> {{ $usuario->apellidos }}</span>
-                                        </div>
+                                        <span class="font-bold uppercase">{{ $usuario->name }}</span>
                                     </td>
-
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold ">
-                                            <span>{{ $usuario->email }}</span>
-                                        </div>
+                                        <span class="font-bold uppercase">{{ $usuario->apellidos }}</span>
                                     </td>
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase ">
-
-                                            <div>
-                                                @if ($usuario->usuario_status_id == '1')
+                                        <a href="{{route('show-planes')}}">
+                                            <span class="font-bold uppercase bg-sky-200 px-4 rounded-lg py-1 text-sky-600">{{ $usuario->plan->nombre }}</span>
+                                        </a>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <span class="font-bold">{{ $usuario->phone }}</span>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <span class="font-bold">{{ $usuario->email }}</span>
+                                    </td>
+                                    <td class="py-1 px-6 text-center">
+                                        <span class="font-bold uppercase">
+                                            @if ($usuario->usuario_status_id == '1')
                                                 <span class="text-white bg-green-600 rounded-lg px-2 py-1">Registrado</span>
                                             @elseif($usuario->usuario_status_id == '2')
                                                 <span class="text-white bg-yellow-500 rounded-lg px-2 py-1">Pendiente</span>
@@ -117,50 +110,33 @@
                                             @else
                                                 <span class="text-gray-500">No Se Registra Estado</span>
                                             @endif
-                                            </div>
-
-                                        </div>
+                                        </span>
                                     </td>
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex items-center font-bold uppercase ">
-                                            <span>{{ \Carbon\Carbon::parse($usuario->created_at)->format('d/m/Y') }}</span>
-                                        </div>
+                                        <span>{{ \Carbon\Carbon::parse($usuario->created_at)->format('d/m/Y') }}</span>
                                     </td>
-
                                     <td class="py-1 px-6 text-center">
-                                        <div class="flex item-center justify-center">
-
-                                            <div class="flex items-center justify-around py-[4px]">
-                                                <a
-                                                    href="{{ route('editar-suscrito', ['id' => $usuario->id]) }}">
-                                                    <button class="btn-editar mb-1">Editar</button>
-                                                </a>
-                                            </div>
-
-
-
-                                        </div>
+                                        <a href="{{ route('editar-suscrito', ['id' => $usuario->id]) }}">
+                                            <button class="btn-editar mb-1">Editar</button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 @else
                     @include('components.alerta-busqueda')
                 @endif
+
                 <div class="bg-gray-200">
                     @if ($usuarios->hasPages())
-                        <div class="px-6 py-3 ">
+                        <div class="px-6 py-3">
                             {{ $usuarios->links() }}
                         </div>
                     @endif
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </div>

@@ -17,13 +17,14 @@ class ShowSuscritos extends Component
     public $search;
     public $filtro_estado;
 
+
     public function updatingSearch()
     {
         $this->resetPage();
     }
     protected $listeners = ['render' => 'render'];
 
-
+   
     //Exportar a Excel
 
     public function exportUsuariosToExcel()
