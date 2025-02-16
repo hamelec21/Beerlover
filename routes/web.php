@@ -17,6 +17,19 @@ use App\Livewire\QRAuth as LivewireQRAuth;
 |
 */
 
+
+
+Route::get('/pago-completado', function () {
+    return view('/pago-completado');
+});
+
+Route::get('/pago-no-completado', function () {
+    return view('/pago-no-completado');
+});
+
+
+
+
 Route::get('/mensaje', function () {
     return view('mensaje');
 });
