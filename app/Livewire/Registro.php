@@ -120,6 +120,7 @@ class Registro extends Component
         $user->roles()->sync([2]);
 
         Mail::to('no-responder@beerlover.cl')->send(new NuevoUsuarioRegistrado($user));
+        return redirect('mensaje');
         return redirect()->route('socio.home');
 
     }
