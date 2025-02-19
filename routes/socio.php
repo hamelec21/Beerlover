@@ -18,4 +18,4 @@ Route::get('/socio/terminos-y-condiciones', \App\Livewire\Socio\TerminosYCondici
 Route::get('/socio/nosotros', \App\Livewire\Socio\Nosotros::class)->name('socio.nosotros');
 
 
-Route::get('/busquedas/buscarhomemenusocio', App\Livewire\Busquedas\buscarhomemenu::class)->name('buscarhomemenusocio');
+//Route::get('/busquedas/buscarhomemenusocio', App\Livewire\Busquedas\buscarhomemenu::class)->name('buscarhomemenusocio');

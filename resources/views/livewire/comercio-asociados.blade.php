@@ -26,7 +26,7 @@
             <div class="grid grid-cols-3 gap-4">
                 <div>
                     <label class="text-md">Comuna</label>
-                    <select class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" wire:model="filtro_comuna">
+                    <select class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" wire:model.live="filtro_comuna">
                         <option value="">---------</option>
                         @foreach ($comunas as $comuna)
                             <option value="{{ $comuna->id }}" class="uppercase">{{ $comuna->nombre }}</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div>
                     <label class="text-md">Sector</label>
-                    <select class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" wire:model="filtro_sector">
+                    <select class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" wire:model.live="filtro_sector">
                         <option value="">---------</option>
                         @foreach ($sectores as $sector)
                             <option value="{{ $sector->id }}" class="uppercase">{{ $sector->nombre }}</option>
@@ -44,7 +44,7 @@
                 </div>
                 <div>
                     <label class="text-md">Especialidad</label>
-                    <select class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" wire:model="filtro_especial">
+                    <select class="py-2 mt-1 rounded-lg w-full px-4 text-gray-800 uppercase" wire:model.live="filtro_especial">
                         <option value="">---------</option>
                         @foreach ($especialidades as $especialidad)
                             <option value="{{ $especialidad->id }}">{{ $especialidad->nombre }}</option>

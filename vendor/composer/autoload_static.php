@@ -150,6 +150,7 @@ class ComposerStaticInitb11483e65f89136ac64d6495d66199eb
             'Laravel\\Prompts\\' => 16,
             'Laravel\\Jetstream\\' => 18,
             'Laravel\\Fortify\\' => 16,
+            'LaravelPWA\\' => 11,
             'LaravelLang\\Publisher\\' => 22,
             'LaravelLang\\NativeLocaleNames\\' => 30,
             'LaravelLang\\NativeCurrencyNames\\' => 32,
@@ -371,8 +372,8 @@ class ComposerStaticInitb11483e65f89136ac64d6495d66199eb
         ),
         'Spatie\\Ignition\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spatie/ignition/src',
-            1 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/ignition',
+            0 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/ignition',
+            1 => __DIR__ . '/..' . '/spatie/ignition/src',
         ),
         'Spatie\\FlareClient\\' => 
         array (
@@ -530,6 +531,10 @@ class ComposerStaticInitb11483e65f89136ac64d6495d66199eb
         'Laravel\\Fortify\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/fortify/src',
+        ),
+        'LaravelPWA\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/silviolleite/laravelpwa',
         ),
         'LaravelLang\\Publisher\\' => 
         array (
@@ -3636,6 +3641,11 @@ class ComposerStaticInitb11483e65f89136ac64d6495d66199eb
         'LaravelLang\\Publisher\\Services\\Filesystem\\Manager' => __DIR__ . '/..' . '/laravel-lang/publisher/src/Services/Filesystem/Manager.php',
         'LaravelLang\\Publisher\\Services\\Filesystem\\Php' => __DIR__ . '/..' . '/laravel-lang/publisher/src/Services/Filesystem/Php.php',
         'LaravelLang\\Publisher\\Services\\Renderer\\ParagraphRenderer' => __DIR__ . '/..' . '/laravel-lang/publisher/src/Services/Renderer/ParagraphRenderer.php',
+        'LaravelPWA\\Http\\Controllers\\LaravelPWAController' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Http/Controllers/LaravelPWAController.php',
+        'LaravelPWA\\Providers\\LaravelPWAServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/LaravelPWAServiceProvider.php',
+        'LaravelPWA\\Providers\\RouteServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/RouteServiceProvider.php',
+        'LaravelPWA\\Services\\ManifestService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/ManifestService.php',
+        'LaravelPWA\\Services\\MetaService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/MetaService.php',
         'Laravel\\Fortify\\Actions\\AttemptToAuthenticate' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/AttemptToAuthenticate.php',
         'Laravel\\Fortify\\Actions\\CanonicalizeUsername' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/CanonicalizeUsername.php',
         'Laravel\\Fortify\\Actions\\CompletePasswordReset' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/CompletePasswordReset.php',
